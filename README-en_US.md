@@ -22,7 +22,7 @@
 ---
 
 > [!IMPORTANT]  
-> **We are fully upgrading the OreUI to V2, which may require some additional time for restructuring the repository, and the official documentation will be gradually released by 2026.**
+> **The project is currently being refactored into a modular UI component system based on Vite to improve reusability and overall usability. The previous version is temporarily no longer being updated or maintained.**
 
 ---
 
