@@ -1,0 +1,313 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../../../../assets/logo-Dtv_h-5K.png" rel="icon">
+    <title>Button 按钮 | OreUI 设计文档</title>
+  <script type="module" crossorigin src="../../../../assets/style-C679GmOk.js"></script>
+  <script type="module" crossorigin src="../../../../oreui.js"></script>
+  <link rel="stylesheet" crossorigin href="../../../../assets/style-DAOvzzfL.css">
+  <link rel="stylesheet" crossorigin href="../../../../assets/oreui-BpxmZlif.css">
+  <link rel="stylesheet" crossorigin href="../../../../assets/document_page-A2RW23pu.css">
+</head>
+
+<oreui-loading-mask>
+    <oreui-loading-wrapper>
+        <oreui-loading-spinner>
+            <img alt="Loading" class="spinner_img" src="../../../../assets/Loading_white-DMpwGoUC.gif"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text">加载中</span>
+        </oreui-loading-spinner>
+    </oreui-loading-wrapper>
+    <noscript>
+        <style>
+            oreui-loading-mask oreui-loading-wrapper {
+                display: none !important;
+            }
+        </style>
+        <oreui-loading-spinner>
+            <img alt="Error" class="spinner_img_error" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAMAAAC8EZcfAAAAn1BMVEVHcExUOwxYQBBYWFiPj49ERERWVlZ0dHRoaGiAgICwfmR/f3////+np6eoqKiZWjx0dHSOjY1oaGhMyz1WVlYpkyawfmR/f39KKxcAr6+ZWjw+tDAAAAANBwVEREQAaGgeThhbW1v///9ExDQwKHJGOqVBN5GoqKg/W9ZUOwxra2sQOApdXV0RPwtYNaK8ZFo/Pz9qQDAHKAQJMgX+/v4tRtiYAAAAEHRSTlMA/gEBAf7+/v4B/v4BAf7+FvcUjgAAAhJJREFUeNrt2GtbgjAYgGE7qp01i7I0O9r5/P9/W5tsc9BQQEgaz/OpSV3eFzF4tdEgIiIiIiIiIiIiWrB7EUCARMQOB8h1CbB+QP1GJ3MaWC3lTAD0FqjLDwyCbhcgwGKAxwll2SSBqnA0QO+BEnKl0jB7DRDgFLgta7UcB4+sDufkAr6KbKC9Hgz6kxYaFgACnAPUfajs1/p9gAB3MgPPJ41GGmWvk4ByMHhT2QNESEu6UY/HcjMB9B64I/oToF18k8hcQNncswjw/wL3RDmALljSjbrRuEiVRmp4pp1cBWBbtaYqHHiqmv40LQ1QfybpqZYOXDXlBJ5HmiKLAD5EAugpcMU0Hn+LSgRGL/48u1jjOqKhCOB/Bu5vqcK/3RXlBtrDwmLA5IdsOM0EVhk2CcDqAtumlEAXNF7yWYgCb2K5gMGM/ACeOUoLvDXdiQCmAYbpf2kcKEsD7KicN+oaA8MAlgEMOUvfJAA9Ar6rHk3PpkrcqAGWCVyPlRmoYSPV7y+Srk3y9zsFd+kIIECAAKsMPCi4niOAdQR+femvK8P15+eL6cmkgV0r15tmOT4c6o9KYXIF0H/gIjfWpIt9FmjWcRtmNglAgCmBeVH28egWAVgX4EGFcg4LAL0HFvmwL2VYAOg9sMiHfSnDAsDaAJeFSj0sAPQeyDQDkHmQcatCwKZVy6rpKMvxjUmbJrn6AUsqVj7bn8y2AAAAAElFTkSuQmCC"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span>
+        </oreui-loading-spinner>
+    </noscript>
+</oreui-loading-mask>
+
+<body>
+<oreui-display-area>
+    <oreui-header>
+        <oreui-header-left>
+            <oreui-header-item class="header_item_left" id="menu" data-event="changeSidebarState">
+                <img alt="" class="header_left_icon" id="menu_icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAYAAACdxrJZAAAA9klEQVR4Ae3ZMRLDIAwEQDv//3PSpJaKkzxOvLQSN7BQwXEYBAgQIECAAAECBAgQIECAAAECBAgQIPAEgXNgk++BjDtHREavO+/sH9YGePkUAQNeFliOd4MBLwssx7vBy8DiCRAgQIAAAQIECBAgQIAAAQJXCkT/Td+F+pMrTsxrWoEzUQI8oVhkAC5wJkqAJxSLDMAFzkQJ8IRikQG4wFEiQIAAAQIECBAgQIAAAQIECPyagD+5/sQiI69pPXDUATji6ycD7o2iDsARXz8ZcG8UdQCO+PrJgHsjHQQIECBAgAABAgQIECBAgAABAgQIECBAoBX4AHF1Ay6gC6MoAAAAAElFTkSuQmCC"/>
+            </oreui-header-item>
+        </oreui-header-left>
+        <oreui-header-logo>
+            <oreui-header-title>OreUI 设计文档</oreui-header-title>
+        </oreui-header-logo>
+    </oreui-header>
+    <oreui-display-body>
+        <oreui-scroll-view class="main_scroll_view">
+            <oreui-scroll-container class="primary_scroll_container">
+                <main class="scroll_container">
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="1">Button 按钮</oreui-document-title>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-banner type="neutral">Button 按钮允许用户通过单次点击来进行导航并做出选择。</oreui-banner>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">用法</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>
+                                    使用按钮来：
+                                </oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>
+                                    - 导航到另一个页面
+                                </oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>
+                                    - 做出选择，比如弹窗中的两个按钮或一组按钮
+                                </oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-body>
+                                <oreui-document-title data-level="3">种类</oreui-document-title>
+                                <oreui-document-body-paragraph>
+                                    按钮共有以下几种种类：
+                                </oreui-document-body-paragraph>
+
+                                <div class="component-type-title">
+                                    <oreui-document-title data-level="4">默认按钮</oreui-document-title>
+                                    <div class="tag_area"><span class="tag green_tag">稳定 (Stable)</span></div>
+                                </div>
+                                <oreui-display data-src="" show-toggle="true" template-mode="base">
+<template>
+    <div class="preview-wrapper">
+        <oreui-button text="默认按钮" status="normal"></oreui-button>
+    </div>
+</template>
+                                </oreui-display>
+                                <oreui-pre data-lang="html">
+<script type="text/plain">
+<oreui-button text="默认按钮" status="normal"></oreui-button>
+</script>
+                                </oreui-pre>
+
+                                <div class="component-type-title">
+                                    <oreui-document-title data-level="4">绿色按钮</oreui-document-title>
+                                    <div class="tag_area"><span class="tag green_tag">稳定 (Stable)</span></div>
+                                </div>
+                                <oreui-display data-src="" show-toggle="true" template-mode="base">
+<template>
+    <div class="preview-wrapper">
+        <oreui-button text="绿色按钮" status="green"></oreui-button>
+    </div>
+</template>
+                                </oreui-display>
+                                <oreui-pre data-lang="html">
+<script type="text/plain">
+<oreui-button text="绿色按钮" status="green"></oreui-button>
+</script>
+                                </oreui-pre>
+
+                                <div class="component-type-title">
+                                    <oreui-document-title data-level="4">红色按钮</oreui-document-title>
+                                    <div class="tag_area"><span class="tag green_tag">稳定 (Stable)</span></div>
+                                </div>
+                                <oreui-display data-src="" show-toggle="true" template-mode="base">
+<template>
+    <div class="preview-wrapper">
+        <oreui-button text="红色按钮" status="red"></oreui-button>
+    </div>
+</template>
+                                </oreui-display>
+                                <oreui-pre data-lang="html">
+<script type="text/plain">
+<oreui-button text="红色按钮" status="red"></oreui-button>
+</script>
+                                </oreui-pre>
+
+                                <div class="component-type-title">
+                                    <oreui-document-title data-level="4">禁用按钮</oreui-document-title>
+                                    <div class="tag_area"><span class="tag green_tag">稳定 (Stable)</span></div>
+                                </div>
+                                <oreui-display data-src="" show-toggle="true" template-mode="base">
+<template>
+    <div class="preview-wrapper">
+        <oreui-button text="禁用按钮" status="disabled"></oreui-button>
+    </div>
+</template>
+                                </oreui-display>
+                                <oreui-pre data-lang="html">
+<script type="text/plain">
+<oreui-button text="禁用按钮" status="disabled"></oreui-button>
+</script>
+                                </oreui-pre>
+
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">样式</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>
+                                    按钮共有以下几种样式：
+                                </oreui-document-body-paragraph>
+
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">标题</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>
+                                    文本
+                                </oreui-document-body-paragraph>
+
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">特殊样式</oreui-document-title>
+                            <oreui-document-body>
+                                <div class="component-type-title">
+                                    <oreui-document-title data-level="4">自愈倒计时</oreui-document-title>
+                                    <div class="tag_area"><span class="tag green_tag">稳定 (Stable)</span></div>
+                                </div>
+                                <oreui-display>
+<template>
+    <div class="preview-wrapper">
+        <oreui-button text="我已阅读并同意" countdown="60"></oreui-button>
+    </div>
+</template>
+                                </oreui-display>
+                                <oreui-pre data-lang="html">
+<script type="text/plain">
+<oreui-button text="我已阅读并同意" countdown="60"></oreui-button>
+</script>
+                                </oreui-pre>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">属性值</oreui-document-title>
+                            <oreui-document-body>
+                                <table class="oreui-table stripe">
+
+                                    <thead class="oreui-table-title">
+                                    <tr>
+                                        <th>属性名</th>
+                                        <th>说明</th>
+                                        <th>类型</th>
+                                        <th>可选值</th>
+                                        <th>默认值</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="oreui-table-body">
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                </main>
+            </oreui-scroll-container>
+            <oreui-scrollbar class="primary_oreui_scrollbar">
+                <oreui-scrollbar-track></oreui-scrollbar-track>
+                <oreui-scrollbar-thumb></oreui-scrollbar-thumb>
+            </oreui-scrollbar>
+        </oreui-scroll-view>
+
+    </oreui-display-body>
+</oreui-display-area>
+
+</body>
+
+
+</html>

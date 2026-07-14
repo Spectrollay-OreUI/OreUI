@@ -1,0 +1,157 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../../assets/logo-Dtv_h-5K.png" rel="icon">
+    <title>引言 | OreUI 设计文档</title>
+  <script type="module" crossorigin src="../../assets/style-C679GmOk.js"></script>
+  <script type="module" crossorigin src="../../oreui.js"></script>
+  <link rel="stylesheet" crossorigin href="../../assets/style-DAOvzzfL.css">
+  <link rel="stylesheet" crossorigin href="../../assets/oreui-BpxmZlif.css">
+  <link rel="stylesheet" crossorigin href="../../assets/document_page-A2RW23pu.css">
+</head>
+
+<oreui-loading-mask>
+    <oreui-loading-wrapper>
+        <oreui-loading-spinner>
+            <img alt="Loading" class="spinner_img" src="../../assets/Loading_white-DMpwGoUC.gif"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text">加载中</span>
+        </oreui-loading-spinner>
+    </oreui-loading-wrapper>
+    <noscript>
+        <style>
+            oreui-loading-mask oreui-loading-wrapper {
+                display: none !important;
+            }
+        </style>
+        <oreui-loading-spinner>
+            <img alt="Error" class="spinner_img_error" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAMAAAC8EZcfAAAAn1BMVEVHcExUOwxYQBBYWFiPj49ERERWVlZ0dHRoaGiAgICwfmR/f3////+np6eoqKiZWjx0dHSOjY1oaGhMyz1WVlYpkyawfmR/f39KKxcAr6+ZWjw+tDAAAAANBwVEREQAaGgeThhbW1v///9ExDQwKHJGOqVBN5GoqKg/W9ZUOwxra2sQOApdXV0RPwtYNaK8ZFo/Pz9qQDAHKAQJMgX+/v4tRtiYAAAAEHRSTlMA/gEBAf7+/v4B/v4BAf7+FvcUjgAAAhJJREFUeNrt2GtbgjAYgGE7qp01i7I0O9r5/P9/W5tsc9BQQEgaz/OpSV3eFzF4tdEgIiIiIiIiIiIiWrB7EUCARMQOB8h1CbB+QP1GJ3MaWC3lTAD0FqjLDwyCbhcgwGKAxwll2SSBqnA0QO+BEnKl0jB7DRDgFLgta7UcB4+sDufkAr6KbKC9Hgz6kxYaFgACnAPUfajs1/p9gAB3MgPPJ41GGmWvk4ByMHhT2QNESEu6UY/HcjMB9B64I/oToF18k8hcQNncswjw/wL3RDmALljSjbrRuEiVRmp4pp1cBWBbtaYqHHiqmv40LQ1QfybpqZYOXDXlBJ5HmiKLAD5EAugpcMU0Hn+LSgRGL/48u1jjOqKhCOB/Bu5vqcK/3RXlBtrDwmLA5IdsOM0EVhk2CcDqAtumlEAXNF7yWYgCb2K5gMGM/ACeOUoLvDXdiQCmAYbpf2kcKEsD7KicN+oaA8MAlgEMOUvfJAA9Ar6rHk3PpkrcqAGWCVyPlRmoYSPV7y+Srk3y9zsFd+kIIECAAKsMPCi4niOAdQR+femvK8P15+eL6cmkgV0r15tmOT4c6o9KYXIF0H/gIjfWpIt9FmjWcRtmNglAgCmBeVH28egWAVgX4EGFcg4LAL0HFvmwL2VYAOg9sMiHfSnDAsDaAJeFSj0sAPQeyDQDkHmQcatCwKZVy6rpKMvxjUmbJrn6AUsqVj7bn8y2AAAAAElFTkSuQmCC"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span>
+        </oreui-loading-spinner>
+    </noscript>
+</oreui-loading-mask>
+
+<body>
+<oreui-display-area>
+    <oreui-header>
+        <oreui-header-left>
+            <oreui-header-item class="header_item_left" data-event="back">
+                <img alt="" class="header_left_icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAB0CAYAAAASLLWNAAAB80lEQVR4Ae3XQVIcQQwEQMz//4x9LhFSVAALrHNvkip2pnP6opcXPwIECBAgQIAAAQIECBAgQIAAAQIE/heBP0940LfyTB8yeC0fJh4CAAOkLQG2YpEHGCBtCbAVizzAAGlLgK1Y5AEGSFsCbMUiDzBA2hJgKxb5D+2B8V9fVT50t20P4Qa2YpEHGCBtCbAVizzAAGlLgK1Y5AEGSFsCbMUiDzBA2hJgKxZ5gAHSlgBbsch/xy78o3fb8DlLN/Ak2gMAd59zCvAk2gMAd59zCvAk2gMAd59zCvAk2gMAd59zCvAk2gMAd59zCvAk2gOfsQs/1W67c82pGzhNqg7AimuGAU6TqgOw4pphgNOk6gCsuGYY4DSpOgArrhkGOE2qDsCKa4YBTpOq8xm7cPXAf+Gn2p3dwPbzRx5ggLQlwFYs8gADpC0BtmKRBxggbQmwFYs8wABpS4CtWOQBBkhbAmzFIv8du3C8wln+6N3ZDTy/3x4AuPucU4An0R4AuPucU4An0R4AuPucU4An0R4AuPucU4An0R4AuPucU4An0R74DbvwfoI5feju7AbOD1B1AFZcMwxwmlQdgBXXDAOcJlUHYMU1wwCnSdUBWHHNMMBpUnUAVlwzDHCa6BAgQIAAAQIECBAgQIAAAQIECBAgQOBdgb9JLAeikCUakgAAAABJRU5ErkJggg=="/>
+            </oreui-header-item>
+            <oreui-header-item class="header_item_left" data-event="home">
+                <img alt="" class="header_left_icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABYCAYAAAAKsfL4AAAB60lEQVR4Ae3a0U3DQBAAUYMoDig40B2YAnIxelmSiOHXzNqe4aQ7i23rJwMZyEAGMpCBDGQgAxn4bwaeHuCFv/AZ7/odn/HlwtFAAVCg4gVQg8gXAAUqXgA1iHwBUKDiBVCDyN/DHln3+ahgu6mDVoDmQ74AKFDxAqhB5AuAAhUvgBpEvgAoUPECqEHk/2IPTPv817d3esXPjxPxOzzqqBWgeZAvAApUvABqEPkCoEDFC6AGkS8AClS8AGoQ+WvscW+6z8f33259TmgFaEHkC4ACFS+AGkS+AChQ8QKoQeQLgAIVL4AaRP7IOeCh9/noZ/yc0ArQQsgXAAUqXgA1iHwBUKDiBVCDyBcABSpeADWI/MsB/tJZgc4JV/gef+AVzv+K/t/RPvmSn/M336+0ApZ65i8WYN7x8g4FWOqZv1iAecfLOxRgqWf+YgHmHS/vUIClnvmLR84B80+xvgPts/fRdE5ZP5pfbQW4Q5pQANLncAHcIU0oAOlzuADukCYUgPQ5XAB3SBMKQPocLoA7pAkFIH0OF8Ad0oQCkD6HC+AOaUIBSJ/DBXCHNEG/tf/cfPp7uz7jXT9fK4D+fh0ugDukCQUgfQ4XwB3ShAKQPocL4A5pQgFIX3AGMpCBDGQgAxnIQAYykIHfG/gGtBUVkBrSLq4AAAAASUVORK5CYII="/>
+            </oreui-header-item>
+        </oreui-header-left>
+        <oreui-header-logo>
+            <oreui-header-title>OreUI 设计</oreui-header-title>
+        </oreui-header-logo>
+        <oreui-header-right>
+            <oreui-header-item class="header_item_right" data-event="link(open, ../index.html)">
+                <img alt="" class="header_right_icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYBAMAAAASWSDLAAAALVBMVEX/7NHAmV6SbkEeHh8sIhOCRRN4lAqNCQnUuJMxY6O8FhZ9WzJSKQe6jRPcqR3o09QeAAAAUklEQVQY02MwRgIMqBzBUAYwCBUkgXOmAwzOYHLgAJ2jBAfonN0uULAbnSO4alVoaFqai4sgBufdu7t309JmzsTkQJRh4SgplYMB1AVIHFyhAwCNJUrpBPsY/AAAAABJRU5ErkJggg=="/>
+            </oreui-header-item>
+            <oreui-header-item class="header_item_right" data-event="link(open, https://github.com/Spectrollay-OreUI/OreUI)">
+                <img alt="" class="header_right_icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAABYlBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo4W1mAAAAdXRSTlMAnwfc74f5IN8QoKwYW2Al7b7M+4DLVA7aCREKQPX0MScFeuDYZ+zikP684UPxmg0+MMGM9+hdqMNlKM8Z5hxBzl/kSp7CwDzZBLeikRVr23+GlPq/6gvjTRIP/JLyFwbz7qS7Kjpic2ONeIR15VFXLksdmbNxzOdYAAABZElEQVQYGW3BhWLbMABF0ZfEiaSUmZnHHTMzM/M6Zrj/P0lOk9T2OWpxN69VpmD/6UNnTirv0tUBWkpGW7nrZOybUJtZS441alpPKLD9qBpML4XOGkXHLdDfYWnTe34UuDyiYBfeDqnbcmBoW9+FBHtO6sK7I88QGEmdnYp6nKQevHtGUp3AKGOGYFUyRKeUcZAgceomsLuVMb5AMKwOgi7lHCG4q2N4O5XnBvCGVMM7rAIWb0UEF1VgEa8mglsqcAKvpmm816+UM0LwSKMEk8oZJrivEsE75ewleK4lok/KmCd6LDdNNK925SrRgznpLXz5YcF+fF9W5PYMLpMqSdqAld9uEa+uqI9Na0beZ0j+/FoGZhRNsmlQgavAqkz175JSN2ioKGW+s/ZTLWVS1qhhdgH+fftQVWqMyBo1GUug1EOCfqM2c1/xlHoKvLh9RVuZ+tQbpcaeJdWXypsYV8MTp6b/5za5GmJI4i4AAAAASUVORK5CYII="/>
+            </oreui-header-item>
+        </oreui-header-right>
+    </oreui-header>
+    <oreui-display-body>
+        <oreui-scroll-view class="main_scroll_view">
+            <oreui-scroll-container class="primary_scroll_container">
+                <main class="scroll_container">
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="1">引言</oreui-document-title>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-banner type="neutral">本项目界面风格灵感源于经典像素视觉范式. 除风格参考外, 与 Mojang AB 及其开发的同名软件资产无任何直接或间接关联, 亦不包含任何官方专有代码及资产.</oreui-banner>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">什么是 OreUI 设计系统？</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>OreUI 设计系统是一套由规范、组件与工具构成的完整体系。它为开发者、设计师、测试人员以及更多相关角色在构建项目和其他数字产品时提供创作流程上的指导。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>组件是构建界面的基础单元，具备足够的灵活性，可适用于多种不同的需求与交互行为。通过对组件进行组合，可以构建新的功能、界面以及用户流程。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>规范则用于帮助团队在实际开发过程中，对组件的使用方式与适用场景做出一致且合理的设计决策。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">如何使用</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>在设计系统中，你可以通过浏览文档访问当前所有可用的规范、组件与工具。每个组件都附带对应的使用规范，应遵循这些规范以确保最佳实践、可访问性以及最佳用户体验。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>组件状态会显示在各组件页面以及组件概览页面中。我们建议优先使用处于稳定 (Stable) 状态的组件。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>社区 (Community) 与实验性 (Experimental) 组件同样可以使用，但请注意其可能存在一定风险，例如不支持所有平台、后续可能发生较大变更等。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>已弃用 (Deprecated) 组件将会逐步移除，请勿继续使用。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">贡献</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>如果你希望参与本项目的开发、改进或维护，可以通过项目仓库中的相关联系方式与我们取得联系，我们会提供必要的信息并帮助你快速了解项目结构与开发流程。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>本项目欢迎任何形式的贡献，包括代码优化、问题修复、文档完善、设计建议以及功能改进等内容。你也可以通过 GitHub Issue 提交问题反馈或功能建议，或 Fork 仓库后提交 Pull Request 参与开发。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>如果你希望进一步了解项目的模块组织结构、组件设计理念以及本地开发环境的搭建方式，请查阅相关开发文档与使用指南。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">如何反馈漏洞</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>如果你在使用组件、浏览文档或运行项目时发现问题，可以通过 GitHub Issue 提交详细的问题反馈。为了帮助我们更快定位问题，建议尽可能提供复现步骤、运行环境、截图或相关日志信息。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>对于功能建议、技术探讨或疑难解答等内容，也可以通过项目页面中的联系方式与我们进行交流与反馈。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-footer-display>
+                        <oreui-footer-display-title>V 0.1.0.20260715.03</oreui-footer-display-title>
+                        <oreui-footer-display-title>MIT Licensed | © 2020 Spectrollay</oreui-footer-display-title>
+                    </oreui-footer-display>
+                </main>
+            </oreui-scroll-container>
+            <oreui-scrollbar class="primary_oreui_scrollbar">
+                <oreui-scrollbar-track></oreui-scrollbar-track>
+                <oreui-scrollbar-thumb></oreui-scrollbar-thumb>
+            </oreui-scrollbar>
+        </oreui-scroll-view>
+    </oreui-display-body>
+</oreui-display-area>
+</body>
+
+
+</html>
