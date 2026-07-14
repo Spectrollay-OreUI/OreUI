@@ -1,0 +1,64 @@
+{
+  "name": "oreui",
+  "private": false,
+  "version": "0.1.0.20260715.03",
+  "type": "module",
+  "description": "Minecraft Style UI Library",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/oreui.umd.js",
+  "module": "./dist/oreui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/oreui.js",
+      "require": "./dist/oreui.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:host": "vite --host",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "build:watch": "vite build --watch",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist",
+    "deploy:dev": "npm run build:dev && gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spectrollay-OreUI/OreUI.git"
+  },
+  "keywords": [
+    "OreUI"
+  ],
+  "author": "Spectrollay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Spectrollay-OreUI/OreUI/issues"
+  },
+  "homepage": "https://github.com/Spectrollay-OreUI/OreUI#readme",
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "vite": "^8.1.4",
+    "vite-plugin-html": "^3.2.2",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.32"
+  },
+  "dependencies": {
+    "glob": "^13.0.6"
+  },
+  "_comments": {
+    "dev": "标准开发模式,支持热更新",
+    "dev:host": "局域网调试模式,允许外部设备访问",
+    "build": "生产环境打包,代码会进行混淆和压缩",
+    "build:dev": "开发环境打包,保留调试信息且不压缩代码",
+    "build:watch": "监听模式打包,代码改动后自动重新构建",
+    "preview": "预览本地dist目录下的打包成品",
+    "deploy": "发布正式版到GitHub Pages",
+    "deploy:dev": "发布开发版到GitHub Pages"
+  }
+}

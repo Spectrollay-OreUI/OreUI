@@ -28,67 +28,188 @@
 <html lang="zh">
 
 <head>
-    <base href="./"><!-- 项目根路径 -->
     <meta charset="UTF-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link as="image" href="/images/Loading_white.gif" rel="preload">
-    <link href="/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/stylesheet/public_style.css" rel="stylesheet">
-    <link href="/stylesheet/oreui.css" rel="stylesheet">
+    <link href="../src/components/layout/loading/style.css" rel="stylesheet">
+    <link href="../src/assets/images/logo.png" rel="icon">
     <title>设计文档 | OreUI</title>
 </head>
 
-<div class="loading_mask" id="loading_mask">
-    <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/images/Loading_white.gif"/></div>
-        <div class="spinner">
-            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
-        </div>
-        <noscript>
-            <style>
-                #spinner_img, .spinner_text {
-                    display: none;
-                }
-            </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/images/ErrorMessage.png"/></div>
-            <div class="spinner">
-                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
-            </div>
-        </noscript>
-    </div>
-</div>
+<oreui-loading-mask>
+    <oreui-loading-wrapper>
+        <oreui-loading-spinner>
+            <img alt="Loading" class="spinner_img" src="../src/assets/images/Loading_white.gif"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text">加载中</span>
+        </oreui-loading-spinner>
+    </oreui-loading-wrapper>
+    <noscript>
+        <style>
+            oreui-loading-mask oreui-loading-wrapper {
+                display: none !important;
+            }
+        </style>
+        <oreui-loading-spinner>
+            <img alt="Error" class="spinner_img_error" src="../src/assets/images/ErrorMessage.png"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span>
+        </oreui-loading-spinner>
+    </noscript>
+</oreui-loading-mask>
 
 <body>
-<dispaly-area>
-    <header>
-        <div class="header_logo">
-            <div class="header_title">OreUI 设计</div>
-        </div>
-    </header>
-    <display-body>
-        <scroll-view class="main_scroll_view">
-            <scroll-container class="primary_scroll_container">
-                <main class="main_content_center scroll_container" id="main">
-                    <div class="display">
-                        <div class="coming_soon-img"><img alt="Coming Soon Image" class="notice_img" src="/images/Building.png"/></div>
-                        <p class="main_detail_center">即将到来</p>
-                    </div>
+<oreui-display-area>
+    <oreui-header>
+        <oreui-header-left>
+            <oreui-header-item class="header_item_left" data-event="back">
+                <img alt="" class="header_left_icon" src="../src/assets/images/Back.png"/>
+            </oreui-header-item>
+        </oreui-header-left>
+        <oreui-header-logo>
+            <oreui-header-title>OreUI 设计</oreui-header-title>
+        </oreui-header-logo>
+        <oreui-header-right>
+            <oreui-header-item class="header_item_right" data-event="link(open, https://github.com/Spectrollay-OreUI/OreUI)">
+                <img alt="" class="header_right_icon" src="../src/assets/images/Github.png"/>
+            </oreui-header-item>
+        </oreui-header-right>
+    </oreui-header>
+    <oreui-display-body>
+        <oreui-scroll-view class="main_scroll_view">
+            <oreui-scroll-container class="primary_scroll_container">
+                <main class="scroll_container">
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="1">导航页</oreui-document-title>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">欢迎来到 OreUI 设计文档！</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>OreUI 是一个由 Spectrollay 独立开发的纯原生、零依赖 Web Components 自定义组件库。旨在为开发者构建硬朗像素风格的应用时，提供视觉与视听交互的工程化规范。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">快速开始</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>快速将 OreUI 引入到项目里，打造原汁原味的像素风界面。</oreui-document-body-paragraph>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./get_start/introduction.html" target="_blank">引言</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./get_start/designer_introduction.html" target="_blank">设计师入门</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./get_start/developer_introduction.html" target="_blank">开发者入门</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./get_start/usage.html" target="_blank">使用指南</a></oreui-list></oreui-document-title>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">设计准则</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>了解视觉规范和交互细节，让页面更有像素质感。</oreui-document-body-paragraph>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./status/coming_soon.html" target="_blank">样式与色彩</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./status/coming_soon.html" target="_blank">空间与适应</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./status/coming_soon.html" target="_blank">交互与状态</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./status/coming_soon.html" target="_blank">无障碍适配</a></oreui-list></oreui-document-title>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">更新历史</oreui-document-title>
+                            <oreui-document-body-paragraph>记录 OreUI 组件库的每一次变动。</oreui-document-body-paragraph>
+                            <oreui-document-body>
+                                <oreui-document-title data-level="4"><oreui-list data-level="1"><a href="./changelog/index.html" target="_blank">开发日志</a></oreui-list></oreui-document-title>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">核心组件</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>遵循统一设计规范的预置原生自定义组件元素。</oreui-document-body-paragraph>
+
+                                <oreui-document-title data-level="4"><oreui-list data-level="1">总览与基础</oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Overview 组件概览</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Design Base 设计基础</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Icons 图标</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Text 文本</a></oreui-list></oreui-document-title>
+
+                                <oreui-document-title data-level="4"><oreui-list data-level="1">页面与导航</oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Document View 文档视图</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Scroll View 滚动视图</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Tool Bar 工具栏</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Tab Bar 标签栏</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Side Bar 侧边栏</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Drawer 抽屉</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Panel 面板</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Pagination 分页</a></oreui-list></oreui-document-title>
+
+                                <oreui-document-title data-level="4"><oreui-list data-level="1">布局与骨架</oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Divider 分割线</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Flat 扁平列表</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Flex 弹性布局</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Grid 网格布局</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Wrap Flex 自动换行弹性布局</a></oreui-list></oreui-document-title>
+
+                                <oreui-document-title data-level="4"><oreui-list data-level="1">数据容器</oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">List 列表</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Table 表格</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Card 卡片</a></oreui-list></oreui-document-title>
+
+                                <oreui-document-title data-level="4"><oreui-list data-level="1">交互与控制</oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./components/controls/button/index.html" target="_blank">Button 按钮</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Link 链接</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Form 表单</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Text Field 输入框</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Checkbox 复选框</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Radio Group 单选框组</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Dropdown 下拉菜单</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Slider 滑块</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Switch 开关</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Display Frame 展示框</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Transfer 穿梭框</a></oreui-list></oreui-document-title>
+
+                                <oreui-document-title data-level="4"><oreui-list data-level="1">反馈与状态</oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Badge 徽标</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Tag 标签</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Pop 弹窗</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Code Preview 代码预览</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Banner 横幅</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Tooltip 提示</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Placeholder 占位符</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Progress Bar 进度条</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Modal 弹窗</a></oreui-list></oreui-document-title>
+                                <oreui-document-title data-level="5"><oreui-list data-level="2"><a href="./status/coming_soon.html" target="_blank">Full Screen Message 全屏消息</a></oreui-list></oreui-document-title>
+
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-footer-display>
+                        <oreui-footer-display-title>V {VERSION}</oreui-footer-display-title>
+                        <oreui-footer-display-title>MIT Licensed | © 2020 Spectrollay</oreui-footer-display-title>
+                    </oreui-footer-display>
                 </main>
-            </scroll-container>
-            <custom-scrollbar class="primary_custom_scrollbar">
-                <custom-scrollbar-track></custom-scrollbar-track>
-                <custom-scrollbar-thumb></custom-scrollbar-thumb>
-            </custom-scrollbar>
-        </scroll-view>
-    </display-body>
-</dispaly-area>
+            </oreui-scroll-container>
+            <oreui-scrollbar class="primary_oreui_scrollbar">
+                <oreui-scrollbar-track></oreui-scrollbar-track>
+                <oreui-scrollbar-thumb></oreui-scrollbar-thumb>
+            </oreui-scrollbar>
+        </oreui-scroll-view>
+    </oreui-display-body>
+</oreui-display-area>
 </body>
 
-<script src="/javascript/loading.js"></script>
-<script src="/library/accessibility.js"></script>
-<script src="/javascript/public_script.js"></script>
-<script src="/javascript/oreui.js"></script>
+<script type="module" src="../src/index.js"></script>
+<link href="../src/styles/overlay/document_page.css" rel="stylesheet">
 
 </html>

@@ -1,0 +1,257 @@
+/* ============================================================
+   全局与布局规范
+   ============================================================ */
+
+/* 移除原生锚点符号 */
+.header-anchor {
+    display: none !important;
+}
+
+.VPDoc .aside {
+    display: none !important;
+}
+
+/* 侧边栏二级菜单 (版本号分类) */
+.VPSidebarItem.level-2 .text {
+    align-items: center;
+    display: flex;
+    font-family: var(--vp-font-family-mono);
+    font-size: 0.85rem !important;
+    gap: 6px;
+}
+
+.VPSidebarItem.level-2 .text::before {
+    content: "";
+}
+
+/* 侧边栏三级菜单 (具体构建号) */
+.VPSidebarItem.level-3 .text {
+    color: var(--vp-c-text-2);
+    font-size: 0.78rem !important;
+}
+
+.VPSidebarItem.level-3 .text:hover {
+    color: var(--vp-c-brand);
+}
+
+/* 其他杂项 */
+
+.VPNavBarSocialLinks.social-links {
+    display: flex !important;
+    margin-right: 12px;
+}
+
+.VPNavBarSocialLinks.social-links::before {
+    height: auto !important;
+    margin-left: 0 !important;
+    margin-right: 12px !important;
+}
+
+.VPFooter.has-sidebar {
+    display: block !important;
+}
+
+@media (min-width: 960px) {
+    .VPFooter.has-sidebar {
+        padding-left: var(--vp-sidebar-width);
+    }
+}
+
+/* ============================================================
+   版本号头部组件
+   ============================================================ */
+
+.vp-doc h2 {
+    margin: 26px 0 16px;
+    padding-top: 16px;
+}
+
+/* 标题容器布局 */
+.v-header {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+/* 基础标签样式 */
+.v-badge {
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 10px;
+    text-transform: uppercase;
+}
+
+/* 标签颜色适配 - Internal */
+.v-badge.internal {
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    color: #d46b08;
+}
+
+/* 标签颜色适配 - Dev */
+.v-badge.dev {
+    background: #f9f0ff;
+    border: 1px solid #d3adf7;
+    color: #722ed1;
+}
+
+/* 标签颜色适配 - Release */
+.v-badge.release {
+    background: #f6ffed;
+    border: 1px solid #b7eb8f;
+    color: #389e0d;
+}
+
+/* 标签颜色适配 - Legacy */
+.v-badge.legacy {
+    background: #e6fffb;
+    border: 1px solid #87e8de;
+    color: #08979c;
+}
+
+/* 标题文本样式 */
+.v-title {
+    color: var(--vp-c-text-1);
+    font-family: var(--vp-font-family-mono);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* 完整版本号显示 */
+.v-full-version {
+    color: var(--vp-c-text-1);
+    font-family: var(--vp-font-family-mono);
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+}
+
+.vp-doc h3 {
+    margin: 0;
+}
+
+/* 元数据展示 */
+.v-meta {
+    color: var(--vp-c-text-3);
+    font-family: var(--vp-font-family-mono);
+    font-size: 13px;
+    margin-left: auto;
+}
+
+.v-meta small {
+    background: var(--vp-c-bg-soft);
+    border-radius: 3px;
+    opacity: 0.6;
+    padding: 1px 4px;
+}
+
+/* ============================================================
+   内容容器样式
+   ============================================================ */
+
+/* 基础容器 */
+.custom-block {
+    border-radius: 12px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 16px 0;
+    padding: 12px 16px;
+}
+
+/* 容器标题 */
+.custom-block .custom-block-title {
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+/* 容器内正文基础 */
+.custom-block p,
+.custom-block.details {
+    color: var(--vp-c-text-1);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Info */
+.custom-block.info {
+    background-color: rgba(24, 144, 255, 0.05);
+    border-color: rgba(24, 144, 255, 0.3);
+}
+
+/* Tip */
+.custom-block.tip {
+    background-color: rgba(82, 196, 26, 0.05);
+    border-color: rgba(82, 196, 26, 0.3);
+}
+
+/* Warning */
+.custom-block.warning {
+    background-color: rgba(250, 173, 20, 0.05);
+    border-color: rgba(250, 173, 20, 0.3);
+}
+
+/* Danger */
+.custom-block.danger {
+    background-color: rgba(255, 77, 79, 0.05);
+    border-color: rgba(255, 77, 79, 0.3);
+}
+
+/* Details */
+.custom-block.details {
+    background-color: var(--vp-c-bg-soft);
+    border-color: var(--vp-c-divider);
+}
+
+.vp-doc blockquote {
+    background-color: rgba(24, 144, 255, 0.05);
+    border-color: rgba(24, 144, 255, 0.3);
+    border-radius: 12px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 16px 0;
+    padding: 12px 16px;
+}
+
+.vp-doc blockquote p {
+    color: var(--vp-c-text-1);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.vp-doc :not(pre) > code {
+    background-color: rgba(24, 144, 255, 0.1);
+    color: #1890ff;
+    font-size: 0.9em;
+    margin: 0 3px;
+}
+
+/* ============================================================
+   导航栏外观切换器优化
+   ============================================================ */
+
+/* 强制显示颜色模式切换器 */
+.VPNavBarAppearance {
+    display: flex !important;
+    margin-right: 8px;
+}
+
+/* 隐藏更多按钮 */
+.VPNavBarExtra {
+    display: none !important;
+}
+
+/* 隐藏菜单按钮 */
+.VPNavBarHamburger {
+    display: none !important;
+}
+
+/* 优化导航栏右侧布局 */
+.VPNavBar .content-body {
+    display: flex !important;
+    gap: 12px;
+    justify-content: flex-end;
+}

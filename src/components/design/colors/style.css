@@ -1,0 +1,283 @@
+/*
+ * Copyright © 2020. Spectrollay
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+:root {
+    /** ==========================================================================
+     * OreUI语义化主题变量
+     * 控制全局组件的行为颜色/状态交互反馈与无障碍视觉对齐
+     * ========================================================================== */
+
+    /* 基础中性色状态与文本 - 默认主题色 */
+    --neutral-background: #48494A;
+    --neutral-background-hovered: #58585A;
+    --neutral-background-pressed: #313233;
+    --neutral-shadow: #313233;
+    --neutral-text: #FFFFFF;
+    --neutral-text-dimmer: #D0D1D4;
+    --neutral-text-dimmest: #B1B2B5;
+    --neutral-icon: #FFFFFF;
+    --neutral-icon-dimmer: #D0D1D4;
+    --neutral-icon-dimmest: #B1B2B5;
+    --neutral-border: #1E1E1F;
+    --neutral-border-focused: #FFFFFF;
+    --neutral-specular-default-top-left: rgba(255, 255, 255, 0.6);
+    --neutral-specular-default-bottom-right: rgba(255, 255, 255, 0.4);
+    --neutral-specular-top-left: rgba(255, 255, 255, 0.2);
+    --neutral-specular-bottom-right: rgba(255, 255, 255, 0.1);
+    --neutral-specular-top-bottom-top: rgba(255, 255, 255, 0.2);
+    --neutral-specular-top-bottom-bottom: rgba(255, 255, 255, 0.1);
+    --neutral-bevel-default-top-left: rgba(255, 255, 255, 0.8);
+    --neutral-bevel-default-bottom-right: rgba(255, 255, 255, 0.6);
+    --neutral-bevel-top-bottom-top: rgba(255, 255, 255, 0.5);
+    --neutral-bevel-top-bottom-bottom: rgba(255, 255, 255, 0.4);
+    --neutral-background-disabled: #D0D1D4;
+    --neutral-shadow-disabled: #B1B2B5;
+    --neutral-text-disabled: #48494A;
+    --neutral-icon-disabled: #48494A;
+    --neutral-icon-dimmer-disabled: #8C8D90;
+    --neutral-border-disabled: #8C8D90;
+
+    /* 中性明暗变体群 */
+    --neutral-20-background: #D0D1D4;
+    --neutral-20-background-hovered: #B1B2B5;
+    --neutral-20-background-pressed: #B1B2B5;
+    --neutral-20-shadow: #58585A;
+    --neutral-20-text: #1E1E1F;
+    --neutral-20-icon: #1E1E1F;
+    --neutral-20-border-focused: #1E1E1F;
+
+    --neutral-50-background: #8C8D90;
+    --neutral-50-background-hovered: #B1B2B5;
+    --neutral-50-background-pressed: #58585A;
+
+    --neutral-60-background: #58585A;
+    --neutral-60-background-hovered: #8C8D90;
+    --neutral-60-background-pressed: #48494A;
+    --neutral-60-border-tint: #8C8D90;
+
+    --neutral-80-background: #313233;
+    --neutral-80-background-hovered: #48494A;
+    --neutral-80-background-pressed: #242425;
+    --neutral-80-background-selected: #48494A;
+    --neutral-80-shadow: #242425;
+    --neutral-80-bevel-pressed-top: rgba(0, 0, 0, 0.8);
+    --neutral-80-bevel-pressed-bottom: rgba(255, 255, 255, 0.1);
+    --neutral-80-bevel-selected-top: rgba(0, 0, 0, 0.4);
+    --neutral-80-bevel-selected-bottom: rgba(255, 255, 255, 0.1);
+
+    --neutral-100-background: #1E1E1F;
+
+    /* 主题品牌色与浅色变体 */
+    --primary-background: #3C8527;
+    --primary-background-hovered: #2A641C;
+    --primary-background-pressed: #1D4D13;
+    --primary-shadow: #1D4D13;
+    --primary-text: #FFFFFF;
+    --primary-icon: #FFFFFF;
+    --primary-border: #1E1E1F;
+
+    --primary-tint-background: #6CC349;
+    --primary-tint-text: #1E1E1F;
+    --primary-tint-border: #1E1E1F;
+
+    /* 次要辅助色 */
+    --secondary-background: #D0D1D4;
+    --secondary-background-hovered: #B1B2B5;
+    --secondary-background-pressed: #B1B2B5;
+    --secondary-shadow: #58585A;
+    --secondary-text: #1E1E1F;
+    --secondary-icon: #1E1E1F;
+    --secondary-border: #1E1E1F;
+
+    /* 状态指示色 - 成功 */
+    --success-background: #3C8527;
+    --success-text: #FFFFFF;
+
+    --success-tint-background: #A0E081;
+    --success-tint-text: #1E1E1F;
+    --success-tint-border: #1E1E1F;
+
+    /* 状态指示色 - 提示 */
+    --informative-background: #2E6BE5;
+    --informative-text: #FFFFFF;
+    --informative-border: #1E1E1F;
+
+    --informative-tint-background: #8CB3FF;
+    --informative-tint-text: #1E1E1F;
+    --informative-tint-border: #1E1E1F;
+
+    /* 状态指示色 - 危险破坏性操作 */
+    --destructive-background: #CA3636;
+    --destructive-background-hovered: #C02D2D;
+    --destructive-background-pressed: #AD1D1D;
+    --destructive-shadow: #AD1D1D;
+    --destructive-text: #FFFFFF;
+    --destructive-icon: #FFFFFF;
+    --destructive-border: #1E1E1F;
+
+    --destructive-tint-background: #F46D6D;
+    --destructive-tint-text: #1E1E1F;
+    --destructive-tint-border: #1E1E1F;
+
+    /* 状态指示色 - 警告通知 */
+    --notice-background: #D3791F;
+
+    --notice-tint-background: #FFE866;
+    --notice-tint-text: #1E1E1F;
+    --notice-tint-border: #1E1E1F;
+
+    /* 数据可视化图表专色系列 */
+    --dataviz-01-background: #42CCCC;
+    --dataviz-02-background: #9471E0;
+    --dataviz-03-background: #FFB366;
+    --dataviz-04-background: #89DEF9;
+    --dataviz-05-background: #A0E081;
+    --dataviz-06-background: #F064B8;
+    --dataviz-07-background: #FFE866;
+    --dataviz-lines: #D0D1D4;
+
+    /* Realms独立业务线专用主色与浅色变体 */
+    --realms-primary-background: #7345E5;
+    --realms-primary-background-hovered: #5D2CC6;
+    --realms-primary-background-pressed: #4A1CAC;
+    --realms-primary-shadow: #4A1CAC;
+    --realms-primary-text: #FFFFFF;
+    --realms-primary-icon: #FFFFFF;
+    --realms-primary-border: #1E1E1F;
+
+    --realms-primary-tint-background: #AC90F3;
+    --realms-primary-tint-text: #1E1E1F;
+    --realms-primary-tint-border: #1E1E1F;
+
+    /* Realms独立业务线专用提示色 */
+    --realms-informative-background: #050029;
+    --realms-informative-text: #FFFFFF;
+    --realms-informative-border: #1E1E1F;
+
+
+    /** ==========================================================================
+     * OreUI原子级基础色板
+     * 纯净调色盘,供上方语义化主题变量进行二次引用
+     * ========================================================================== */
+
+    /* 绿系阶梯 */
+    --green-10: #A0E081;
+    --green-20: #86D562;
+    --green-30: #6CC349;
+    --green-40: #52A535;
+    --green-50: #3C8527;
+    --green-60: #2A641C;
+    --green-70: #1D4D13;
+    --green-80: #153A0E;
+    --green-90: #112F0B;
+    --green-100: #0F2B0A;
+
+    /* 红系阶梯 */
+    --red-10: #F46D6D;
+    --red-20: #EA5E5E;
+    --red-30: #DF5050;
+    --red-40: #D54242;
+    --red-50: #CA3636;
+    --red-60: #C02D2D;
+    --red-70: #B62525;
+    --red-80: #AD1D1D;
+    --red-90: #A31616;
+    --red-100: #990F0F;
+
+    /* 蓝系阶梯 */
+    --blue-10: #8CB3FF;
+    --blue-20: #2E6BE5;
+    --blue-30: #1452CC;
+
+    /* 黄系阶梯 */
+    --yellow-10: #FFE866;
+    --yellow-20: #E5C317;
+    --yellow-30: #8A7500;
+
+    /* 橙系阶梯 */
+    --orange-10: #FFB366;
+    --orange-20: #D3791F;
+    --orange-30: #A65B11;
+
+    /* 深蓝阶梯 */
+    --deep-blue-10: #AC90F3;
+    --deep-blue-20: #9471E0;
+    --deep-blue-40: #7855E8;
+    --deep-blue-50: #7345E5;
+    --deep-blue-60: #5D2CC6;
+    --deep-blue-70: #4A1CAC;
+    --deep-blue-100: #050029;
+
+    /* 灰阶与纯色 */
+    --white: #FFFFFF;
+    --gray-10: #F4F6F9;
+    --gray-20: #E6E8EB;
+    --gray-30: #D0D1D4;
+    --gray-40: #B1B2B5;
+    --gray-50: #8D8D90;
+    --gray-60: #58585A;
+    --gray-70: #48494A;
+    --gray-80: #313233;
+    --gray-90: #242425;
+    --gray-100: #1E1E1F;
+    --black: #000000;
+
+    /* 黑色通道不透明度 */
+    --black-opacity-10: #0000001A;
+    --black-opacity-20: #00000033;
+    --black-opacity-30: #0000004D;
+    --black-opacity-40: #00000066;
+    --black-opacity-50: #00000080;
+    --black-opacity-60: #00000099;
+    --black-opacity-70: #000000B3;
+    --black-opacity-80: #000000CC;
+    --black-opacity-90: #000000E6;
+
+    /* 白色通道不透明度 */
+    --white-opacity-10: #FFFFFF1A;
+    --white-opacity-20: #FFFFFF33;
+    --white-opacity-30: #FFFFFF4D;
+    --white-opacity-40: #FFFFFF66;
+    --white-opacity-50: #FFFFFF80;
+    --white-opacity-60: #FFFFFF99;
+    --white-opacity-70: #FFFFFFB3;
+    --white-opacity-80: #FFFFFFCC;
+    --white-opacity-90: #FFFFFFE6;
+
+
+    /** ==========================================================================
+     * 组件特异性映射变量
+     * 拦截并覆盖特定组件的特定微观样式
+     * ========================================================================== */
+
+    /* 边框 */
+    --box-border-top-color: var(--gray-60);
+    --box-border-left-bottom-right-color: var(--gray-80);
+
+    /* 侧边栏 */
+    --sidebar-background: #313233;
+    --sidebar-divider-top: var(--black);
+    --sidebar-divider-bottom: var(--gray-70);
+
+    /* 全局遮罩 */
+    --overlay-background: var(--black-opacity-70);
+}

@@ -1,2 +1,7 @@
 /.idea
-/experiments_internal
+/dist/
+/node_modules/
+/experiments_internal/
+/debug/
+/.vitepress/cache/
+/.vitepress/.temp/

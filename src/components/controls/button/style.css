@@ -1,0 +1,279 @@
+/*
+ * Copyright © 2020. Spectrollay
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+/* ==========================================================================
+   OreUI 按钮全局控制变量
+   ========================================================================== */
+:root {
+    --oreui-btn-height: 40px;
+    --oreui-btn-margin: 6px;
+    --oreui-btn-font-family: "NotoSans Bold", sans-serif;
+
+    --oreui-btn-active-offset: 4px;
+
+    --oreui-btn-padding-bottom: 6px;
+
+    --oreui-btn-width-xs: 100px;
+    --oreui-btn-width-sm: 130px;
+    --oreui-btn-width-md: 200px;
+    --oreui-btn-width-lg: 272px;
+
+    --oreui-btn-icon-size: 14px;
+    --oreui-btn-tooltip-param-top: -30px;
+}
+
+
+/* ==========================================================================
+   OreUI 按钮组件基本样式
+   ========================================================================== */
+oreui-button {
+    display: inline-block;
+}
+
+oreui-button-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oreui_btn_inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    height: var(--oreui-btn-height);
+    margin: var(--oreui-btn-margin);
+    border: none;
+    outline: none;
+    font-family: var(--oreui-btn-font-family);
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.oreui_btn_inner:active:not(:disabled):not(.status_disabled) {
+    height: calc(var(--oreui-btn-height) - var(--oreui-btn-active-offset));
+    margin-top: calc(var(--oreui-btn-margin) + var(--oreui-btn-active-offset));
+    padding-bottom: calc(var(--oreui-btn-padding-bottom) - (var(--oreui-btn-active-offset) / 2));
+}
+
+
+/* ==========================================================================
+   按钮尺寸
+   ========================================================================== */
+.oreui_btn_inner.size_extra_small {
+    width: var(--oreui-btn-width-xs);
+}
+
+.oreui_btn_inner.size_small {
+    width: var(--oreui-btn-width-sm);
+}
+
+.oreui_btn_inner.size_middle {
+    width: var(--oreui-btn-width-md);
+}
+
+.oreui_btn_inner.size_large {
+    width: var(--oreui-btn-width-lg);
+}
+
+
+/* ==========================================================================
+   按钮状态与色彩方案
+   ========================================================================== */
+
+/* 默认按钮 */
+.oreui_btn_inner.status_normal {
+    height: var(--oreui-btn-height);
+    padding-bottom: var(--oreui-btn-padding-bottom);
+    border: 2px solid var(--neutral-border);
+    background-color: var(--secondary-background);
+    box-shadow:
+            inset 0 -4px var(--secondary-shadow),
+            inset 3px 3px var(--neutral-specular-default-top-left),
+            inset -3px -7px var(--neutral-specular-default-bottom-right);
+    color: var(--neutral-20-text);
+}
+
+.oreui_btn_inner.status_normal:hover:not(:disabled) {
+    background-color: var(--secondary-background-hovered);
+    box-shadow:
+            inset 0 -4px var(--secondary-shadow),
+            inset 3px 3px var(--white-opacity-80),
+            inset -3px -7px var(--white-opacity-60);
+}
+
+.oreui_btn_inner.status_normal:active:not(:disabled) {
+    background-color: var(--secondary-background-pressed);
+    box-shadow:
+            inset 3px 3px var(--white-opacity-80),
+            inset -3px -3px var(--white-opacity-60);
+}
+
+/* 绿色按钮 */
+.oreui_btn_inner.status_green {
+    height: var(--oreui-btn-height);
+    padding-bottom: var(--oreui-btn-padding-bottom);
+    border: 2px solid var(--primary-border);
+    background-color: var(--primary-background);
+    box-shadow:
+            inset 0 -4px var(--primary-shadow),
+            inset 3px 3px var(--neutral-specular-top-left),
+            inset -3px -7px var(--neutral-specular-bottom-right);
+    color: var(--primary-text);
+}
+
+.oreui_btn_inner.status_green:hover:not(:disabled) {
+    background-color: var(--primary-background-hovered);
+    box-shadow:
+            inset 0 -4px var(--primary-shadow),
+            inset 3px 3px var(--white-opacity-40),
+            inset -3px -7px var(--white-opacity-30);
+}
+
+.oreui_btn_inner.status_green:active:not(:disabled) {
+    background-color: var(--primary-background-pressed);
+    box-shadow:
+            inset 3px 3px var(--white-opacity-40),
+            inset -3px -3px var(--white-opacity-30);
+}
+
+/* 红色按钮 */
+.oreui_btn_inner.status_red {
+    height: var(--oreui-btn-height);
+    padding-bottom: var(--oreui-btn-padding-bottom);
+    border: 2px solid var(--destructive-border);
+    background-color: var(--destructive-background);
+    box-shadow:
+            inset 0 -4px var(--destructive-shadow),
+            inset 3px 3px var(--neutral-specular-top-left),
+            inset -3px -7px var(--neutral-specular-bottom-right);
+    color: var(--destructive-text);
+}
+
+.oreui_btn_inner.status_red:hover:not(:disabled) {
+    background-color: var(--destructive-background-hovered);
+    box-shadow:
+            inset 0 -4px var(--destructive-shadow),
+            inset 3px 3px var(--white-opacity-50),
+            inset -3px -7px var(--white-opacity-40);
+}
+
+.oreui_btn_inner.status_red:active:not(:disabled) {
+    background-color: var(--destructive-background-pressed);
+    box-shadow:
+            inset 3px 3px var(--white-opacity-50),
+            inset -3px -3px var(--white-opacity-40);
+}
+
+/* 禁用按钮 */
+.oreui_btn_inner:disabled,
+.oreui_btn_inner.status_disabled {
+    height: var(--oreui-btn-height);
+    padding-bottom: var(--oreui-btn-padding-bottom);
+    border: 2px solid var(--neutral-border-disabled);
+    background-color: var(--neutral-background-disabled);
+    box-shadow: inset 0 -4px var(--neutral-shadow-disabled);
+    color: var(--neutral-text-disabled);
+    cursor: not-allowed;
+}
+
+.oreui_btn_inner:disabled img,
+.oreui_btn_inner.status_disabled img {
+    filter: invert(100%) grayscale(100%) brightness(50%);
+}
+
+
+/* ==========================================================================
+   特殊按钮变体
+   ========================================================================== */
+
+/* 侧边栏专属按钮 */
+.oreui_btn_inner.type_sidebar {
+    width: 140px;
+    height: var(--oreui-btn-height);
+    margin: var(--oreui-btn-margin);
+    padding-bottom: 2px;
+    border: 2px solid var(--neutral-shadow);
+    background-color: var(--neutral-background);
+    box-shadow:
+            inset -1px -1px var(--neutral-border),
+            inset 1px 1px var(--neutral-border),
+            inset -2px -2px var(--neutral-background-pressed),
+            inset 2px 2px var(--neutral-60-border-tint);
+    color: var(--neutral-text);
+}
+
+.oreui_btn_inner.type_sidebar:hover,
+.oreui_btn_inner.type_sidebar:active {
+    height: var(--oreui-btn-height);
+    margin: var(--oreui-btn-margin);
+    padding-bottom: 2px;
+    border: 2px solid var(--neutral-border-focused);
+    background-color: var(--neutral-background-hovered);
+    box-shadow: none;
+}
+
+
+/* ==========================================================================
+   按钮内嵌图标与部件
+   ========================================================================== */
+.oreui_btn_icon {
+    width: var(--oreui-btn-icon-size);
+    height: var(--oreui-btn-icon-size);
+}
+
+.oreui_btn_icon.left {
+    margin-right: 4px;
+}
+
+.oreui_btn_icon.right {
+    margin-left: 4px;
+}
+
+
+/* ==========================================================================
+   提示悬浮文本
+   ========================================================================== */
+.oreui_btn_tooltip_wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.oreui_btn_tooltip_box {
+    position: absolute;
+    top: var(--oreui-btn-tooltip-param-top);
+    right: 10px;
+    z-index: 1;
+    padding: 5px;
+    background-color: #1F1F1F;
+    color: var(--white);
+    font-size: 12px;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.oreui_btn_tooltip_wrapper:hover .oreui_btn_tooltip_box {
+    visibility: visible;
+    opacity: 1;
+}

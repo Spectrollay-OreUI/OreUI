@@ -1,0 +1,185 @@
+/*
+ * Copyright © 2020. Spectrollay
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+:root {
+    --sidebar-transition: left 0.6s, transform 0.6s;
+    --sidebar-width: 240px;
+    --sidebar-scroller-width: 238px;
+    --sidebar-overlay-transition: opacity 0.6s, visibility 0.6s;
+}
+
+oreui-sidebar:not(:defined) {
+    display: none;
+}
+
+/* ==========================================================================
+   Sidebar框架与遮罩
+   ========================================================================== */
+
+oreui-sidebar {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 0;
+}
+
+oreui-sidebar[data-state="open"] {
+    width: 100%;
+}
+
+oreui-sidebar oreui-sidebar-mask {
+    background-color: var(--overlay-background);
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: var(--sidebar-overlay-transition);
+    visibility: hidden;
+    z-index: 9;
+}
+
+oreui-sidebar[data-state="open"] oreui-sidebar-mask {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================================================
+   侧边栏内容容器与动画
+   ========================================================================== */
+
+oreui-sidebar oreui-scroll-view {
+    background-color: var(--sidebar-background);
+    border-right: 2px solid var(--gray-100);
+    color: var(--neutral-text);
+    display: flex;
+    font-family: var(--font-noto-bold);
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: absolute;
+    top: 0;
+    transform: translateX(calc(-1 * var(--sidebar-width)));
+    transition: var(--sidebar-transition);
+    width: var(--sidebar-scroller-width);
+    z-index: 10;
+}
+
+oreui-sidebar[data-state="open"] oreui-scroll-view {
+    transform: translateX(0);
+}
+
+/* ==========================================================================
+   内部展示组件
+   ========================================================================== */
+
+oreui-sidebar-content {
+    display: block;
+    width: auto;
+}
+
+oreui-sidebar-header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    justify-content: center;
+    width: 100%;
+}
+
+oreui-sidebar-list {
+    display: block;
+}
+
+oreui-sidebar-info {
+    display: block;
+}
+
+oreui-sidebar-divider {
+    border-bottom: 2px solid var(--sidebar-divider-bottom);
+    border-top: 2px solid var(--sidebar-divider-top);
+    display: block;
+}
+
+oreui-sidebar-title {
+    align-items: center;
+    display: flex;
+    font-family: var(--font-mc-ten);
+    font-size: 20px;
+    justify-content: center;
+    margin: 6px 0;
+    min-height: 30px;
+    text-align: center;
+}
+
+oreui-sidebar-detail {
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+    height: 24px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+oreui-sidebar-item {
+    align-items: center;
+    color: inherit;
+    display: flex;
+    height: 40px;
+    padding-left: 10px;
+}
+
+oreui-sidebar-item oreui-list {
+    margin: 0;
+}
+
+oreui-sidebar-item a {
+    box-shadow: unset;
+}
+
+oreui-sidebar-item:hover,
+oreui-sidebar-item:active {
+    background-color: var(--neutral-background-hovered);
+}
+
+/* ==========================================================================
+   响应式设计布局
+   ========================================================================== */
+
+@media screen and (min-width: 1200px) {
+    oreui-sidebar {
+        width: var(--sidebar-scroller-width) !important;
+    }
+
+
+    oreui-sidebar oreui-scroll-view {
+        transform: translateX(0) !important;
+    }
+
+    oreui-sidebar oreui-sidebar-mask {
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+}

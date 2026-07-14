@@ -1,0 +1,145 @@
+/*
+ * Copyright © 2020. Spectrollay
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+/* ==========================================================================
+   页头区域
+   ========================================================================== */
+
+/* 头部徽标容器 */
+oreui-header-logo {
+    justify-content: left;
+}
+
+/* 头部标题文本容器 */
+oreui-header-title {
+    margin-left: 30px;
+}
+
+/* 头部展示性主图片 */
+.header_img {
+    margin-top: 20px;
+    max-width: 560px; /* 限制大屏下的最大显示宽度 */
+    width: 90%; /* 移动端自适应宽度 */
+}
+
+
+/* ==========================================================================
+   标题与描述区域
+   ========================================================================== */
+
+/* 主标题核心文本 */
+.main_title_span_main {
+    font-size: 28px;
+    margin: 10px;
+}
+
+/* 副标题像素风格文本 */
+.main_title_span_sub {
+    font-family: "Minecraft Seven", sans-serif;
+    font-size: 24px;
+    margin: 4px 10px;
+}
+
+/* 核心介绍描述文本块 */
+.main_description {
+    margin: 10px;
+}
+
+
+/* ==========================================================================
+   详情与卡片区块
+   ========================================================================== */
+
+/* 详情展示块基础卡片 */
+.detail_block {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 12px;
+    width: 240px;
+}
+
+/* 详情块纯文本类型的对齐修正 */
+.detail_block.text {
+    text-align: justify;
+}
+
+/* 简要描述块级卡片 */
+.description_block {
+    cursor: unset; /* 移除可点击的指针状态 */
+    white-space: normal; /* 允许长文本正常自动换行 */
+    width: 240px;
+}
+
+
+/* ==========================================================================
+   徽章与按钮交互区域
+   ========================================================================== */
+
+/* 介绍模块的徽章排版组 */
+.introduction_badge_area {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap; /* 空间不足时自动向下换行 */
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 6px;
+    margin-top: 12px;
+}
+
+/* 徽章包裹的超链接 */
+.introduction_badge_area a {
+    box-shadow: unset; /* 清除默认的链接阴影 */
+}
+
+/* 按钮组件变量覆盖 */
+oreui-button {
+    --oreui-btn-height: 50px; /* 统一定制按钮高度定义 */
+}
+
+/* 按钮内部文本标签 */
+.oreui_btn_inner {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+/* ==========================================================================
+   底部展示区域
+   ========================================================================== */
+
+/* 全局页脚展示容器 */
+oreui-footer-display {
+    align-items: center;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-family: "Minecraft Seven", sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+/* 页脚内部标题文本 */
+oreui-footer-display-title {
+    margin: 6px 0;
+}

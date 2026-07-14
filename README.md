@@ -10,11 +10,11 @@
 
 ### 一个基于 OreUI 设计理念的**原生 WebUI 实现**
 
-[![星标数](https://img.shields.io/github/stars/Spectrollay/OreUI?color=eac54f&style=for-the-badge&label=星标数)](https://github.com/Spectrollay/OreUI/stargazers)
-[![分支数](https://img.shields.io/github/forks/Spectrollay/OreUI?color=brightgreen&style=for-the-badge&label=分支数)](https://github.com/Spectrollay/OreUI/network/members)
-[![仓库大小](https://img.shields.io/github/repo-size/Spectrollay/OreUI?style=for-the-badge&label=仓库大小)](https://github.com/Spectrollay/OreUI/archive/refs/heads/main.zip)
+[![星标数](https://img.shields.io/github/stars/Spectrollay-OreUI/OreUI?color=eac54f&style=for-the-badge&label=星标数)](https://github.com/Spectrollay-OreUI/OreUI/stargazers)
+[![分支数](https://img.shields.io/github/forks/Spectrollay-OreUI/OreUI?color=brightgreen&style=for-the-badge&label=分支数)](https://github.com/Spectrollay-OreUI/OreUI/network/members)
+[![仓库大小](https://img.shields.io/github/repo-size/Spectrollay-OreUI/OreUI?style=for-the-badge&label=仓库大小)](https://github.com/Spectrollay-OreUI/OreUI/archive/refs/heads/main.zip)
 
-[![最近提交](https://img.shields.io/github/last-commit/Spectrollay/OreUI?style=for-the-badge&label=最近提交)](https://github.com/Spectrollay/OreUI/commits/main)
+[![最近提交](https://img.shields.io/github/last-commit/Spectrollay-OreUI/OreUI?style=for-the-badge&label=最近提交)](https://github.com/Spectrollay-OreUI/OreUI/commits/main)
 [![开源许可](https://img.shields.io/badge/开源许可-MIT-ff69b4?style=for-the-badge)](LICENSE)
 
 </div>
@@ -35,9 +35,9 @@ OreUI 是由 Mojang Studios 推出的**开源用户界面 (UI) 构建基石**，
 
 ## 🚀 快速开始
 
-* ### 🏠 [**OreUI 项目主页**](https://spectrollay.github.io/OreUI)
-* ### 📚 [**OreUI 设计文档**](https://spectrollay.github.io/OreUI/docs)
-* ### 🛠️ [**OreUI 使用指南**](https://spectrollay.github.io/OreUI/docs/how_to_use.html)
+* ### 🏠 [**OreUI 项目主页**](https://oreui.spectrollay.com)
+* ### 📚 [**OreUI 设计文档**](https://oreui.spectrollay.com/docs/index.html)
+* ### 🛠️ [**OreUI 使用指南**](https://oreui.spectrollay.com/docs/get_start/usage.html)
 
 ---
 
@@ -91,8 +91,8 @@ OreUI 是由 Mojang Studios 推出的**开源用户界面 (UI) 构建基石**，
 
 我们非常欢迎你为本项目做出贡献！无论是代码、文档还是想法，你的参与都至关重要。
 
-* **发现问题或提出建议：** 通过 [**GitHub Issues**](https://github.com/Spectrollay/OreUI/issues) 详细描述你的问题或建议。
-* **贡献代码及参与开发：** 欢迎 [**Fork**](https://github.com/Spectrollay/OreUI/fork) 本仓库，进行修改后提交 Pull Request。
+* **发现问题或提出建议：** 通过 [**GitHub Issues**](https://github.com/Spectrollay-OreUI/OreUI/issues) 详细描述你的问题或建议。
+* **贡献代码及参与开发：** 欢迎 [**Fork**](https://github.com/Spectrollay-OreUI/OreUI/fork) 本仓库，进行修改后提交 Pull Request。
 
 在贡献之前，请务必阅读我们的 [**贡献指南**](CONTRIBUTING.md) 以了解更多细节。
 

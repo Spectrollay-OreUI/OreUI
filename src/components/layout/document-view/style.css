@@ -1,0 +1,273 @@
+/*
+ * Copyright © 2020. Spectrollay
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+/* ==========================================================================
+   全局根配置与行为重置
+   ========================================================================== */
+
+:root {
+    color-scheme: light !important; /* 杜绝系统暗色模式造成的滤镜反色怪异问题 */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: light !important;
+    }
+}
+
+html {
+    font-family: "NotoSans Bold", sans-serif;
+    height: 100%;
+    overflow: hidden; /* 锁死外层视口滚动 */
+    overscroll-behavior: contain; /* 禁用移动端下拉刷新和橡皮筋回弹效果 */
+}
+
+body {
+    background-color: #48494A;
+    height: 100%;
+    margin: 0;
+    min-width: 330px;
+    overflow: hidden;
+    position: relative;
+    scrollbar-width: none; /* 隐藏原生滚动条 */
+    -webkit-touch-callout: none; /* 禁用iOS长按呼出菜单/呼出气泡 */
+    -webkit-user-select: none; /* 禁止用户全局框选文本 */
+}
+
+/* 页面文本选择禁用蓝框选择视觉 */
+::selection {
+    background-color: transparent;
+    color: inherit;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent; /* 禁用点击半透明高亮背景 */
+    touch-action: manipulation; /* 禁用双击缩放 */
+}
+
+/* ==========================================================================
+   全局基础通用类
+   ========================================================================== */
+
+.flex {
+    display: flex;
+}
+
+.wrap_flex {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   主视口核心骨架布局
+   ========================================================================== */
+
+/* 全局展示大容器 */
+oreui-display-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 主体内容承载框架 */
+oreui-display-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 核心滚动视口 */
+oreui-scroll-view {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* ==========================================================================
+   顶部标题栏组件
+   ========================================================================== */
+
+/* 顶栏主容器 */
+oreui-header {
+    align-items: center;
+    background-color: #E6E8EB;
+    border-bottom: 4px solid #B1B2B5;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    min-width: 330px;
+    position: relative;
+    z-index: 10;
+}
+
+/* 顶栏左侧工具槽位 */
+oreui-header-left {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    z-index: 1;
+}
+
+/* 顶栏右侧工具槽位 */
+oreui-header-right {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+/* 顶栏交互项(按钮通用基础样式) */
+oreui-header-item {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    z-index: 1;
+}
+
+oreui-header-item:hover {
+    background-color: #F4F6F9;
+}
+
+oreui-header-item:active {
+    background-color: #D0D1D4;
+}
+
+/* 顶栏左侧特定按钮样式 */
+oreui-header-item.header_item_left {
+    border-right: 2px solid #A1A3A5;
+    box-shadow: inset -2px 0 #FFFFFF;
+    width: 42px;
+}
+
+/* 顶栏右侧特定按钮样式 */
+oreui-header-item.header_item_right {
+    border-left: 2px solid #FFFFFF;
+    box-shadow: inset 2px 0 #A1A3A5;
+    width: 42px;
+}
+
+/* 顶栏占位空按钮 */
+oreui-header-item.header_item_blank {
+    border: 0;
+    box-shadow: unset;
+    cursor: default;
+    pointer-events: none;
+    width: 44px;
+}
+
+oreui-header-item.header_item_blank:hover,
+oreui-header-item.header_item_blank:active {
+    background-color: unset;
+}
+
+/* 顶栏交互项图标尺寸及内边距微调 */
+oreui-header-item .header_left_icon,
+oreui-header-item .header_right_icon {
+    height: 30px;
+}
+
+oreui-header-item .header_left_icon {
+    padding: 4px 6px 4px 4px;
+}
+
+oreui-header-item .header_right_icon {
+    padding: 4px 4px 4px 6px;
+}
+
+/* 顶栏 logo 定位槽 */
+oreui-header-logo {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+/* 标志区域小图标 */
+.title_icon {
+    padding: 0 8px;
+    width: 30px;
+}
+
+/* 核心标题文字样式 */
+oreui-header-title {
+    align-items: center;
+    display: flex;
+    font-family: "Minecraft Ten", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    height: 38px;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* 响应式设计 */
+#back.with_menu {
+    display: none;
+}
+
+@media screen and (min-width: 1200px) {
+    #menu {
+        display: none;
+    }
+
+    #back.with_menu {
+        display: flex;
+    }
+}
+
+/* ==========================================================================
+   页面底部信息组件
+   ========================================================================== */
+
+/* 底部状态展示区基础定义 */
+oreui-footer-display {
+    display: block;
+    font-family: "NotoSans Bold", sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+/* 底部提示标题 */
+oreui-footer-display-title {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 底部提示文字 */
+oreui-footer-display-text {
+    display: block;
+    color: rgba(255, 255, 255, 0.4);
+}

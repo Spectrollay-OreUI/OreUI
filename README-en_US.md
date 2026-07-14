@@ -10,11 +10,11 @@
 
 ### A **Native WebUI Implementation** Based on OreUI Design Principle
 
-[![Stars](https://img.shields.io/github/stars/Spectrollay/OreUI?color=eac54f&style=for-the-badge&label=Stars)](https://github.com/Spectrollay/OreUI/stargazers)
-[![Forks](https://img.shields.io/github/forks/Spectrollay/OreUI?color=brightgreen&style=for-the-badge&label=Forks)](https://github.com/Spectrollay/OreUI/network/members)
-[![Repo Size](https://img.shields.io/github/repo-size/Spectrollay/OreUI?style=for-the-badge&label=Repo%20Size)](https://github.com/Spectrollay/OreUI/archive/refs/heads/main.zip)
+[![Stars](https://img.shields.io/github/stars/Spectrollay-OreUI/OreUI?color=eac54f&style=for-the-badge&label=Stars)](https://github.com/Spectrollay-OreUI/OreUI/stargazers)
+[![Forks](https://img.shields.io/github/forks/Spectrollay-OreUI/OreUI?color=brightgreen&style=for-the-badge&label=Forks)](https://github.com/Spectrollay-OreUI/OreUI/network/members)
+[![Repo Size](https://img.shields.io/github/repo-size/Spectrollay-OreUI/OreUI?style=for-the-badge&label=Repo%20Size)](https://github.com/Spectrollay-OreUI/OreUI/archive/refs/heads/main.zip)
 
-[![Last Commit](https://img.shields.io/github/last-commit/Spectrollay/OreUI?style=for-the-badge&label=Last%20Commit)](https://github.com/Spectrollay/OreUI/commits/main)
+[![Last Commit](https://img.shields.io/github/last-commit/Spectrollay-OreUI/OreUI?style=for-the-badge&label=Last%20Commit)](https://github.com/Spectrollay-OreUI/OreUI/commits/main)
 [![License](https://img.shields.io/badge/License-MIT-ff69b4?style=for-the-badge)](LICENSE)
 
 </div>
@@ -35,9 +35,9 @@ You can delve deeper into its details at [Mojang/ore-ui](https://github.com/Moja
 
 ## 🚀 Quick Start
 
-* ### 🏠 [**OreUI Project Homepage**](https://spectrollay.github.io/OreUI)
-* ### 📚 [**OreUI Design Docs**](https://spectrollay.github.io/OreUI/docs)
-* ### 🛠️ [**OreUI Usage Guidance**](https://spectrollay.github.io/OreUI/docs/how_to_use.html)
+* ### 🏠 [**OreUI Project Homepage**](https://oreui.spectrollay.com)
+* ### 📚 [**OreUI Design Docs**](https://oreui.spectrollay.com/docs/index.html)
+* ### 🛠️ [**OreUI Usage Guidance**](https://oreui.spectrollay.com/docs/get_start/usage.html)
 
 ---
 
@@ -91,8 +91,8 @@ Explore these practical applications built with the OreUI design philosophy:
 
 We welcome contributions of all kinds! Whether it’s code, documentation, or ideas — your participation is invaluable.
 
-* **Report Issues or Suggestions:** Use [**GitHub Issues**](https://github.com/Spectrollay/OreUI/issues) to describe your ideas or problems in detail.
-* **Contribute Code:** [**Fork**](https://github.com/Spectrollay/OreUI/fork) this repository, make changes, and submit a Pull Request.
+* **Report Issues or Suggestions:** Use [**GitHub Issues**](https://github.com/Spectrollay-OreUI/OreUI/issues) to describe your ideas or problems in detail.
+* **Contribute Code:** [**Fork**](https://github.com/Spectrollay-OreUI/OreUI/fork) this repository, make changes, and submit a Pull Request.
 
 Before contributing, please read our [**Contributing Guide**](CONTRIBUTING.md) for more details.
 

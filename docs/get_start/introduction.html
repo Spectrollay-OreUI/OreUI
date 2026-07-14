@@ -1,0 +1,155 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../../src/components/layout/loading/style.css" rel="stylesheet">
+    <link href="../../src/assets/images/logo.png" rel="icon">
+    <title>引言 | OreUI 设计文档</title>
+</head>
+
+<oreui-loading-mask>
+    <oreui-loading-wrapper>
+        <oreui-loading-spinner>
+            <img alt="Loading" class="spinner_img" src="../../src/assets/images/Loading_white.gif"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text">加载中</span>
+        </oreui-loading-spinner>
+    </oreui-loading-wrapper>
+    <noscript>
+        <style>
+            oreui-loading-mask oreui-loading-wrapper {
+                display: none !important;
+            }
+        </style>
+        <oreui-loading-spinner>
+            <img alt="Error" class="spinner_img_error" src="../../src/assets/images/ErrorMessage.png"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span>
+        </oreui-loading-spinner>
+    </noscript>
+</oreui-loading-mask>
+
+<body>
+<oreui-display-area>
+    <oreui-header>
+        <oreui-header-left>
+            <oreui-header-item class="header_item_left" data-event="back">
+                <img alt="" class="header_left_icon" src="../../src/assets/images/Back.png"/>
+            </oreui-header-item>
+            <oreui-header-item class="header_item_left" data-event="home">
+                <img alt="" class="header_left_icon" src="../../src/assets/images/Home.png"/>
+            </oreui-header-item>
+        </oreui-header-left>
+        <oreui-header-logo>
+            <oreui-header-title>OreUI 设计</oreui-header-title>
+        </oreui-header-logo>
+        <oreui-header-right>
+            <oreui-header-item class="header_item_right" data-event="link(open, ../index.html)">
+                <img alt="" class="header_right_icon" src="../../src/assets/images/Docs.png"/>
+            </oreui-header-item>
+            <oreui-header-item class="header_item_right" data-event="link(open, https://github.com/Spectrollay-OreUI/OreUI)">
+                <img alt="" class="header_right_icon" src="../../src/assets/images/Github.png"/>
+            </oreui-header-item>
+        </oreui-header-right>
+    </oreui-header>
+    <oreui-display-body>
+        <oreui-scroll-view class="main_scroll_view">
+            <oreui-scroll-container class="primary_scroll_container">
+                <main class="scroll_container">
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="1">引言</oreui-document-title>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-banner type="neutral">本项目界面风格灵感源于经典像素视觉范式. 除风格参考外, 与 Mojang AB 及其开发的同名软件资产无任何直接或间接关联, 亦不包含任何官方专有代码及资产.</oreui-banner>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">什么是 OreUI 设计系统？</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>OreUI 设计系统是一套由规范、组件与工具构成的完整体系。它为开发者、设计师、测试人员以及更多相关角色在构建项目和其他数字产品时提供创作流程上的指导。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>组件是构建界面的基础单元，具备足够的灵活性，可适用于多种不同的需求与交互行为。通过对组件进行组合，可以构建新的功能、界面以及用户流程。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>规范则用于帮助团队在实际开发过程中，对组件的使用方式与适用场景做出一致且合理的设计决策。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">如何使用</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>在设计系统中，你可以通过浏览文档访问当前所有可用的规范、组件与工具。每个组件都附带对应的使用规范，应遵循这些规范以确保最佳实践、可访问性以及最佳用户体验。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>组件状态会显示在各组件页面以及组件概览页面中。我们建议优先使用处于稳定 (Stable) 状态的组件。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>社区 (Community) 与实验性 (Experimental) 组件同样可以使用，但请注意其可能存在一定风险，例如不支持所有平台、后续可能发生较大变更等。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>已弃用 (Deprecated) 组件将会逐步移除，请勿继续使用。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">贡献</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>如果你希望参与本项目的开发、改进或维护，可以通过项目仓库中的相关联系方式与我们取得联系，我们会提供必要的信息并帮助你快速了解项目结构与开发流程。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>本项目欢迎任何形式的贡献，包括代码优化、问题修复、文档完善、设计建议以及功能改进等内容。你也可以通过 GitHub Issue 提交问题反馈或功能建议，或 Fork 仓库后提交 Pull Request 参与开发。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>如果你希望进一步了解项目的模块组织结构、组件设计理念以及本地开发环境的搭建方式，请查阅相关开发文档与使用指南。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <oreui-document-layout>
+                            <oreui-document-title data-level="3">如何反馈漏洞</oreui-document-title>
+                            <oreui-document-body>
+                                <oreui-document-body-paragraph>如果你在使用组件、浏览文档或运行项目时发现问题，可以通过 GitHub Issue 提交详细的问题反馈。为了帮助我们更快定位问题，建议尽可能提供复现步骤、运行环境、截图或相关日志信息。</oreui-document-body-paragraph>
+                                <oreui-document-body-paragraph>对于功能建议、技术探讨或疑难解答等内容，也可以通过项目页面中的联系方式与我们进行交流与反馈。</oreui-document-body-paragraph>
+                            </oreui-document-body>
+                        </oreui-document-layout>
+                    </oreui-main-display-frame>
+                    <oreui-footer-display>
+                        <oreui-footer-display-title>V {VERSION}</oreui-footer-display-title>
+                        <oreui-footer-display-title>MIT Licensed | © 2020 Spectrollay</oreui-footer-display-title>
+                    </oreui-footer-display>
+                </main>
+            </oreui-scroll-container>
+            <oreui-scrollbar class="primary_oreui_scrollbar">
+                <oreui-scrollbar-track></oreui-scrollbar-track>
+                <oreui-scrollbar-thumb></oreui-scrollbar-thumb>
+            </oreui-scrollbar>
+        </oreui-scroll-view>
+    </oreui-display-body>
+</oreui-display-area>
+</body>
+
+<script type="module" src="../../src/index.js"></script>
+<link href="../../src/styles/overlay/document_page.css" rel="stylesheet">
+
+</html>

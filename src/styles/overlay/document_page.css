@@ -1,0 +1,471 @@
+/*
+ * Copyright © 2020. Spectrollay
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+/* ==========================================================================
+   布局
+   ========================================================================== */
+
+/* 文档整体布局容器 */
+oreui-document-layout {
+    display: block;
+    padding: 12px;
+    text-align: left;
+    width: 100%;
+}
+
+/* 文档标题通用基类 */
+oreui-document-title {
+    color: var(--neutral-text);
+    display: block;
+    font-family: "Minecraft Seven", sans-serif;
+    font-weight: 500;
+    margin: 8px;
+}
+
+/* 一级标题 */
+oreui-document-title[data-level="1"] {
+    font-size: 28px;
+    text-align: center;
+}
+
+/* 二级标题 */
+oreui-document-title[data-level="2"] {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* 三级标题 */
+oreui-document-title[data-level="3"] {
+    font-size: 22px;
+    text-align: left;
+}
+
+/* 四级标题 */
+oreui-document-title[data-level="4"] {
+    font-size: 20px;
+    text-align: left;
+}
+
+/* 五级标题 */
+oreui-document-title[data-level="5"] {
+    font-size: 18px;
+    text-align: left;
+}
+
+oreui-banner .banner-content {
+    justify-content: left;
+}
+
+/* 标题内部的超链接 */
+oreui-document-title a {
+    padding-bottom: 3px;
+}
+
+/* 文档正文包裹容器 */
+oreui-document-body {
+    display: block;
+    margin: 8px;
+}
+
+/* 正文内部嵌套的标题 */
+oreui-document-body oreui-document-title {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* 正文段落 */
+oreui-document-body-paragraph {
+    color: var(--neutral-text);
+    display: block;
+    line-height: 1.6;
+    margin: 6px 0;
+    text-align: justify;
+    text-indent: 2em; /* 首行缩进两个字符 */
+}
+
+
+/* ==========================================================================
+   代码块
+   ========================================================================== */
+
+/* 行内普通代码块 */
+oreui-code {
+    background-color: #282C34;
+    border: 1px solid #3E4452;
+    color: #E1E1E1;
+    display: inline;
+    font-family: 'Cascadia Code', Consolas, Monaco, monospace;
+    font-size: 13px;
+    margin: 0 4px;
+    padding: 2px 4px;
+    white-space: pre-wrap; /* 允许行内代码自动换行 */
+    word-break: break-all;
+}
+
+/* 大代码块外层基础面板 */
+oreui-pre {
+    background: #282C34;
+    border: 1px solid #3E4452;
+    display: block;
+    margin: 10px 0;
+    overflow: hidden; /* 隐藏溢出, 配合语言标签定位 */
+    position: relative; /* 建立绝对定位基准 */
+}
+
+/* 代码内容实际滚动的核心容器 */
+oreui-pre .pre-container {
+    background: #282C34;
+    -webkit-overflow-scrolling: touch; /* 优化移动端滚动体验 */
+    color: #E1E1E1;
+    cursor: default;
+    font-family: 'Cascadia Code', 'Fira Code', 'Segoe UI Monospace', Menlo, Monaco, 'Courier New', monospace;
+    font-size: 13.5px;
+    letter-spacing: 0.4px;
+    line-height: 1.65;
+    margin: 0;
+    overflow-x: overlay; /* 动态覆盖滚动条 */
+    padding: 45px 16px 16px 16px; /* 顶部留出空间放置悬浮按钮 */
+    scrollbar-gutter: stable; /* 防止滚动条出现时产生界面抖动 */
+    white-space: pre;
+}
+
+/* 💡 只有当代码发生溢出时，才激活抓取手势 */
+oreui-pre .pre-container.has-overflow {
+    cursor: grab;
+}
+
+/* 正在执行鼠标拖拽时的容器状态 */
+oreui-pre .pre-container.is-dragging {
+    cursor: grabbing !important; /* 拖拽时切换为紧抓手势 */
+}
+
+/* 代码语言标识标签 */
+oreui-pre .lang-badge {
+    background: #1E1F22;
+    border: 1px solid #3E4452;
+    color: #2FBAA3;
+    font-family: 'Cascadia Code', 'Fira Code', 'Segoe UI Monospace', Menlo, Monaco, 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    left: 8px;
+    padding: 6px 8px;
+    position: absolute;
+    top: 8px;
+    user-select: none; /* 防止双击代码时误选中文本 */
+}
+
+/* 一键复制按钮 */
+oreui-pre .copy-btn {
+    align-items: center;
+    background: #21252B;
+    border: 1px solid #3E4452;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    transition: background 0.2s ease;
+    width: 30px;
+}
+
+/* 复制按钮悬浮状态 */
+oreui-pre .copy-btn:hover {
+    background: #2C313C;
+}
+
+/* 复制按钮内部图标 */
+oreui-pre .copy-btn img {
+    height: 20px;
+    opacity: 1;
+    transition: opacity 0.15s ease;
+    width: 20px;
+}
+
+/* 图标状态切换时的淡出动画类 */
+oreui-pre .copy-btn img.changing {
+    opacity: 0;
+}
+
+/* 复制成功时的按钮状态 */
+oreui-pre .copy-btn.copied {
+    background: #314333;
+}
+
+/* 复制失败时的按钮状态 */
+oreui-pre button.copy-btn.error {
+    background: #522525;
+}
+
+/* 定制代码块横向滚动条 */
+oreui-pre .pre-container::-webkit-scrollbar {
+    background: transparent;
+    height: 0;
+}
+
+
+/* ==========================================================================
+   代码块语法高亮支持词元
+   ========================================================================= */
+
+/* 关键字 */
+oreui-pre .token-keyword {
+    color: #cf8e6d;
+    font-weight: bold;
+}
+
+/* 字符串与属性值 */
+oreui-pre .token-string {
+    color: #6aab73;
+}
+
+/* 数字与十六进制 */
+oreui-pre .token-number {
+    color: #56A8F5;
+}
+
+/* 函数与方法名 */
+oreui-pre .token-function {
+    color: #56A8F5;
+}
+
+/* 属性名与 JSON 键 */
+oreui-pre .token-property {
+    color: #c77dbb;
+}
+
+/* HTML/XML 标签名 */
+oreui-pre .token-tag {
+    color: #D5B778;
+}
+
+/* 正则表达式 */
+oreui-pre .token-regex {
+    color: #42C3D4;
+}
+
+/* 普通单行与块级注释 */
+oreui-pre .token-comment {
+    color: #7a7e85;
+}
+
+/* 文档注释 (JSDoc) */
+oreui-pre .token-doc-comment {
+    color: #5f826b;
+}
+
+/* 纯数字标量 */
+oreui-pre .token-pure-number {
+    color: #2AACB8;
+}
+
+/* url() 路径中的文件资源文本 */
+oreui-pre .token-url-path {
+    color: #5C92FF;
+}
+
+/* HTML 实体字符 */
+oreui-pre .token-entity {
+    color: #56A8F5;
+}
+
+/* 装饰器/注解 */
+oreui-pre .token-decorator {
+    color: #b3ae60;
+}
+
+
+/* ==========================================================================
+   组件预览区
+   ========================================================================== */
+oreui-display {
+    background-color: #1e1e24;
+    border: 1px solid #3e4452;
+    box-sizing: border-box;
+    display: block;
+    height: var(--iframe-dynamic-height, auto);
+    margin-bottom: 20px;
+    min-height: 100px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+oreui-display.is-web-link {
+    height: 450px;
+}
+
+oreui-display + oreui-pre {
+    border-top: 0;
+    margin-top: -20px;
+}
+
+oreui-display .fullscreen-toggle {
+    align-items: center;
+    background-color: #7F7F81;
+    border: 1px solid #3e4452;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    transition: background 0.2s ease, opacity 0.2s ease;
+    width: 30px;
+    z-index: 10;
+}
+
+oreui-display .fullscreen-toggle:hover {
+    background-color: #989899;
+}
+
+oreui-display .fullscreen-toggle img {
+    height: 20px;
+    object-fit: contain;
+    width: 20px;
+}
+
+/* 沙箱 iframe */
+oreui-display .preview-interactive-iframe {
+    border: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+oreui-display.is-fullscreen {
+    border: unset;
+    box-sizing: border-box;
+    height: 100vh;
+    left: 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 99;
+}
+
+oreui-display.is-fullscreen .fullscreen-toggle {
+    position: fixed;
+    right: 8px;
+    top: 8px;
+}
+
+.component-type-title {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    margin: 20px 0 10px;
+}
+
+
+.oreui-table {
+    background: #1e1e24;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+    text-align: left;
+    width: 100%;
+    color: #abb2bf;
+    box-sizing: border-box;
+}
+
+/* 显眼表头 */
+.oreui-table thead tr {
+    background: #181a1f;
+    border-bottom: 2px solid #4b5263;
+}
+
+.oreui-table th {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 14px 12px;
+}
+
+.oreui-table td {
+    padding: 12px 12px;
+}
+
+/* 默认的行横向分割线 */
+.oreui-table tbody tr {
+    border-bottom: 1px solid #2c313c;
+}
+
+
+.oreui-table td:nth-child(1) {
+    color: #e5c07b;
+    font-weight: bold;
+}
+
+.oreui-table td:nth-child(3) {
+    color: #98c379;
+}
+
+
+.oreui-table {
+    --oreui-table-highlight: #2c313c;
+}
+
+.oreui-table:not(.mode-stripe) tbody tr:hover {
+    background-color: var(--oreui-table-highlight);
+    transition: background-color 0.1s ease;
+}
+
+.oreui-table.mode-stripe tbody tr:nth-child(even) {
+    background-color: var(--oreui-table-highlight);
+}
+.oreui-table.mode-stripe tbody tr:hover {
+    background-color: transparent;
+}
+
+.oreui-table.with-border th:not(:last-child),
+.oreui-table.with-border td:not(:last-child) {
+    border-right: 1px solid #2c313c;
+}
+
+/* ==========================================================================
+   底部展示区域
+   ========================================================================== */
+
+/* 全局页脚展示容器 */
+oreui-footer-display {
+    align-items: center;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-family: "Minecraft Seven", sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+/* 页脚内部标题标题文本 */
+oreui-footer-display-title {
+    margin: 6px 0;
+}

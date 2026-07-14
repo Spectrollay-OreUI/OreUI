@@ -1,0 +1,135 @@
+<!--
+ * @Author: Spectrollay
+ * @WebUI: OreUI V2
+ -->
+<!--
+  ~ Copyright © 2020. Spectrollay
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../../../../src/components/layout/loading/style.css" rel="stylesheet">
+    <link href="../../../../src/assets/images/logo.png" rel="icon">
+    <title>Sidebar 侧边栏 | OreUI 设计文档</title>
+</head>
+
+<oreui-loading-mask>
+    <oreui-loading-wrapper>
+        <oreui-loading-spinner>
+            <img alt="Loading" class="spinner_img" src="../../../../src/assets/images/Loading_white.gif"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text">加载中</span>
+        </oreui-loading-spinner>
+    </oreui-loading-wrapper>
+    <noscript>
+        <style>
+            oreui-loading-mask oreui-loading-wrapper {
+                display: none !important;
+            }
+        </style>
+        <oreui-loading-spinner>
+            <img alt="Error" class="spinner_img_error" src="../../../../src/assets/images/ErrorMessage.png"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span>
+        </oreui-loading-spinner>
+    </noscript>
+</oreui-loading-mask>
+
+<body>
+<oreui-display-area>
+    <oreui-header>
+        <oreui-header-left>
+            <oreui-header-item class="header_item_left" id="menu" data-event="changeSidebarState">
+                <img alt="" class="header_left_icon" id="menu_icon" src="../../../../src/assets/images/Menu.png"/>
+            </oreui-header-item>
+        </oreui-header-left>
+        <oreui-header-logo>
+            <oreui-header-title>OreUI 设计文档</oreui-header-title>
+        </oreui-header-logo>
+    </oreui-header>
+    <oreui-display-body>
+        <oreui-scroll-view class="main_scroll_view">
+            <oreui-scroll-container class="primary_scroll_container">
+                <main class="scroll_container">
+                    <oreui-page-title-area>
+                        <oreui-page-title>
+                            <oreui-page-title-span>Sidebar 侧边栏</oreui-page-title-span>
+                        </oreui-page-title>
+                    </oreui-page-title-area>
+                    <oreui-banner type="neutral">Sidebar 侧边栏是一个从屏幕边缘滑入的面板, 常用作页面锚点指示或添加补充内容.</oreui-banner>
+                    <oreui-main-display-frame>
+
+                    </oreui-main-display-frame>
+                </main>
+            </oreui-scroll-container>
+            <oreui-scrollbar class="primary_oreui_scrollbar">
+                <oreui-scrollbar-track></oreui-scrollbar-track>
+                <oreui-scrollbar-thumb></oreui-scrollbar-thumb>
+            </oreui-scrollbar>
+        </oreui-scroll-view>
+        <!--侧边栏-->
+        <oreui-sidebar id="sidebar" data-state="closed">
+            <oreui-scroll-view>
+                <oreui-scroll-container class="secondary_scroll_container">
+                    <oreui-sidebar-content>
+                        <oreui-sidebar-header>
+                            <oreui-sidebar-title>侧边栏</oreui-sidebar-title>
+                        </oreui-sidebar-header>
+                        <oreui-sidebar-divider></oreui-sidebar-divider>
+                        <oreui-sidebar-list>
+                            <oreui-sidebar-item data-level="1" data-anchor="javascript:void(0);">这是一级菜单</oreui-sidebar-item>
+                            <oreui-sidebar-item data-level="2" data-anchor="javascript:void(0);">这是二级菜单</oreui-sidebar-item>
+                            <oreui-sidebar-item data-level="3" data-anchor="javascript:void(0);">这是三级菜单</oreui-sidebar-item>
+                            <oreui-sidebar-item data-level="4" data-anchor="javascript:void(0);">这是四级菜单</oreui-sidebar-item>
+                            <oreui-sidebar-item data-level="3" data-anchor="javascript:void(0);">这是三级菜单</oreui-sidebar-item>
+                            <oreui-sidebar-item data-level="2" data-anchor="javascript:void(0);">这是二级菜单</oreui-sidebar-item>
+                            <oreui-sidebar-item data-level="1" data-anchor="javascript:void(0);">这是一级菜单</oreui-sidebar-item>
+                        </oreui-sidebar-list>
+                        <oreui-sidebar-divider></oreui-sidebar-divider>
+                        <oreui-sidebar-info>
+                            <oreui-sidebar-title>OreUI</oreui-sidebar-title>
+                            <oreui-sidebar-detail>Spectrollay</oreui-sidebar-detail>
+                        </oreui-sidebar-info>
+                    </oreui-sidebar-content>
+                </oreui-scroll-container>
+                <oreui-scrollbar class="secondary_oreui_scrollbar">
+                    <oreui-scrollbar-track></oreui-scrollbar-track>
+                    <oreui-scrollbar-thumb></oreui-scrollbar-thumb>
+                </oreui-scrollbar>
+            </oreui-scroll-view>
+        </oreui-sidebar>
+    </oreui-display-body>
+</oreui-display-area>
+
+</body>
+
+<script type="module" src="../../../../src/index.js"></script>
+<link href="../../../../src/styles/overlay/document_page.css" rel="stylesheet">
+
+</html>

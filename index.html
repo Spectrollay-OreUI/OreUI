@@ -28,179 +28,140 @@
 <html lang="zh">
 
 <head>
-    <base href="./"><!-- 项目根路径 -->
     <meta charset="UTF-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="webkit" name="renderer">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link as="image" href="/images/Loading_white.gif" rel="preload">
-    <link href="/stylesheet/loading_mask.css" rel="stylesheet">
-    <link href="/stylesheet/public_style.css" rel="stylesheet">
-    <link href="/stylesheet/oreui.css" rel="stylesheet">
-    <style>
-        .header_logo {
-            justify-content: left;
-        }
-
-        .header_title {
-            margin-left: 30px;
-        }
-
-        .main_title_area {
-            margin: 10px 20px;
-        }
-
-        .header_img {
-            margin-top: 20px;
-            max-width: 560px;
-            width: 90%;
-        }
-
-        .main_title_span_main {
-            font-family: "Minecraft Ten", sans-serif;
-            font-size: 28px;
-            margin: 10px 0;
-        }
-
-        .main_title_span_sub {
-            font-size: 24px;
-            margin: 4px 0;
-        }
-
-        .btn {
-            height: 50px;
-        }
-
-        .btn:active:not(.disabled_btn) {
-            height: 46px;
-        }
-
-        .main_description {
-            margin: 10px;
-        }
-
-        .description_block {
-            cursor: unset;
-            width: 240px;
-        }
-
-        .footer_info {
-            align-items: center;
-            color: #FFFFFF;
-            display: flex;
-            font-family: "Minecraft Seven", sans-serif;
-            font-size: 20px;
-            height: 60px;
-            justify-content: center;
-            text-align: center;
-        }
-    </style>
+    <link href="./src/components/layout/loading/style.css" rel="stylesheet">
+    <link href="./src/assets/images/logo.png" rel="icon">
     <title>快速开始 | OreUI</title>
 </head>
 
-<div class="loading_mask" id="loading_mask">
-    <div>
-        <div class="spinner"><img alt="" id="spinner_img" src="/images/Loading_white.gif"/></div>
-        <div class="spinner">
-            <div class="spinner"><span class="spinner_text">生成世界中</span></div>
-        </div>
-        <noscript>
-            <style>
-                #spinner_img, .spinner_text {
-                    display: none;
-                }
-            </style>
-            <div class="spinner"><img alt="" id="spinner_img_error" src="/images/ErrorMessage.png"/></div>
-            <div class="spinner">
-                <div class="spinner"><span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span></div>
-            </div>
-        </noscript>
-    </div>
-</div>
+<oreui-loading-mask>
+    <oreui-loading-wrapper>
+        <oreui-loading-spinner>
+            <img alt="Loading" class="spinner_img" src="./src/assets/images/Loading_white.gif"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text">加载中</span>
+        </oreui-loading-spinner>
+    </oreui-loading-wrapper>
+    <noscript>
+        <style>
+            oreui-loading-mask oreui-loading-wrapper {
+                display: none !important;
+            }
+        </style>
+        <oreui-loading-spinner>
+            <img alt="Error" class="spinner_img_error" src="./src/assets/images/ErrorMessage.png"/>
+        </oreui-loading-spinner>
+        <oreui-loading-spinner>
+            <span class="spinner_text_error">页面无法加载: 当前环境不支持或已禁用脚本.<br>请更换支持脚本的环境或在设置中允许脚本后访问本站.</span>
+        </oreui-loading-spinner>
+    </noscript>
+</oreui-loading-mask>
 
 <body>
-<dispaly-area>
-    <header>
-        <div class="header_item header_item_left header_item_blank"></div>
-        <div class="header_logo">
-            <div class="header_title">OreUI 设计</div>
-        </div>
-        <div class="header_item header_item_right" onclick="playSoundType(this);openLink('https://github.com/Spectrollay/OreUI');">
-            <img alt="" class="header_right_icon" src="/images/Github.png"/>
-        </div>
-    </header>
-    <display-body>
-        <scroll-view class="main_scroll_view">
-            <scroll-container class="primary_scroll_container">
+<oreui-display-area>
+    <oreui-header>
+        <oreui-header-left>
+            <oreui-header-item class="header_item_left header_item_blank"></oreui-header-item>
+        </oreui-header-left>
+        <oreui-header-logo>
+            <oreui-header-title>OreUI 设计</oreui-header-title>
+        </oreui-header-logo>
+        <oreui-header-right>
+            <oreui-header-item class="header_item_right" data-event="link(open, https://github.com/Spectrollay-OreUI/OreUI)">
+                <img alt="" class="header_right_icon" src="./src/assets/images/Github.png"/>
+            </oreui-header-item>
+        </oreui-header-right>
+    </oreui-header>
+    <oreui-display-body>
+        <oreui-scroll-view class="main_scroll_view">
+            <oreui-scroll-container class="primary_scroll_container">
                 <main class="scroll_container" id="main">
-                    <div class="main_title">
-                        <div class="main_title_area">
-                            <img alt="Minecraft ArtWork" class="header_img" src="/images/Default.png"/>
-                            <div class="main_title_span_main">OreUI 设计</div>
-                            <div class="main_title_span_sub">一个基于 OreUI 设计理念的原生 WebUI 实现</div>
-                        </div>
-                    </div>
-                    <div class="main main_block">
-                        <div class="main_block_content">
-                            <div class="btn_group">
-                                <custom-button data="default|green|small||false||" js="openLink('/docs');" text="设计文档"></custom-button>
-                                <custom-button data="default|normal|small||false||" js="openLink('/docs/how_to_use.html');" text="使用指南"></custom-button>
+                    <oreui-page-title-area>
+                        <oreui-page-title>
+                            <oreui-page-title-span class="main_title_span_main">OreUI 设计</oreui-page-title-span>
+                            <oreui-page-title-span class="main_title_span_sub">一个基于 OreUI 设计理念的原生 WebUI 实现</oreui-page-title-span>
+                            <div class="introduction_badge_area">
+                                <a href="https://github.com/Spectrollay-OreUI/OreUI/stargazers" target="_blank">
+                                    <img alt="星标数" src="https://img.shields.io/github/stars/Spectrollay-OreUI/OreUI?color=eac54f&style=for-the-badge&label=星标数">
+                                </a>
+                                <a href="https://github.com/Spectrollay-OreUI/OreUI/network/members" target="_blank">
+                                    <img alt="分支数" src="https://img.shields.io/github/forks/Spectrollay-OreUI/OreUI?color=brightgreen&style=for-the-badge&label=分支数">
+                                </a>
+                                <a href="https://github.com/Spectrollay-OreUI/OreUI/archive/refs/heads/main.zip" target="_blank">
+                                    <img alt="分支数" src="https://img.shields.io/github/repo-size/Spectrollay-OreUI/OreUI?style=for-the-badge&label=仓库大小">
+                                </a>
                             </div>
+                        </oreui-page-title>
+                    </oreui-page-title-area>
+                    <oreui-main-display-frame>
+                        <oreui-button-group>
+                            <oreui-button type="default" status="green" size="small" data-event="link(jump, ./docs/index.html)" text="设计文档"></oreui-button>
+                            <oreui-button type="default" status="normal" size="small" data-event="link(jump, ./docs/get_start/usage.html)" text="使用指南"></oreui-button>
+                        </oreui-button-group>
+                        <div class="detail_block">
+                            <a href="https://github.com/Spectrollay-OreUI/OreUI" target="_blank">仓库</a> | <a href="./docs/changelog/index.html" target="_blank">开发日志</a> | <a href="https://github.com/Spectrollay-OreUI/OreUI/releases" target="_blank">下载</a>
                         </div>
-                    </div>
-                    <div class="main main_block">
-                        <div class="main_block_content">
-                            <div class="wrap_flex main_description">
-                                <link-block class="description_block">
-                                    <div class="link_title">
-                                        <span class="link_title_text">纯原生实现</span>
-                                    </div>
-                                    <div class="link_description">不依赖任何第三方库，确保轻量、高效、易于集成。</div>
-                                </link-block>
-                                <link-block class="description_block">
-                                    <div class="link_title">
-                                        <span class="link_title_text">模块化构建</span>
-                                    </div>
-                                    <div class="link_description">组件可独立使用或组合使用，极大提升开发灵活性。</div>
-                                </link-block>
-                                <link-block class="description_block">
-                                    <div class="link_title">
-                                        <span class="link_title_text">高度可定制</span>
-                                    </div>
-                                    <div class="link_description">通过简单调整即可轻松修改样式，满足个性化需求。</div>
-                                </link-block>
-                                <link-block class="description_block">
-                                    <div class="link_title">
-                                        <span class="link_title_text">响应式设计</span>
-                                    </div>
-                                    <div class="link_description">组件针对不同设备类型自适应显示，确保流畅体验。</div>
-                                </link-block>
-                                <link-block class="description_block">
-                                    <div class="link_title">
-                                        <span class="link_title_text">广泛兼容性</span>
-                                    </div>
-                                    <div class="link_description">支持大多数主流现代浏览器，各终端特性保持一致。</div>
-                                </link-block>
-                            </div>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <div class="wrap_flex main_description">
+                            <oreui-show-block class="description_block">
+                                <oreui-show-block-title>
+                                    <oreui-show-block-title-text>纯原生实现</oreui-show-block-title-text>
+                                </oreui-show-block-title>
+                                <oreui-show-block-description>不依赖任何第三方库，确保轻量、高效、易于集成。</oreui-show-block-description>
+                            </oreui-show-block>
+                            <oreui-show-block class="description_block">
+                                <oreui-show-block-title>
+                                    <oreui-show-block-title-text>模块化构建</oreui-show-block-title-text>
+                                </oreui-show-block-title>
+                                <oreui-show-block-description>组件可独立使用或组合使用，极大提升开发灵活性。</oreui-show-block-description>
+                            </oreui-show-block>
+                            <oreui-show-block class="description_block">
+                                <oreui-show-block-title>
+                                    <oreui-show-block-title-text>高度可定制</oreui-show-block-title-text>
+                                </oreui-show-block-title>
+                                <oreui-show-block-description>通过简单调整即可轻松修改样式，满足个性化需求。</oreui-show-block-description>
+                            </oreui-show-block>
+                            <oreui-show-block class="description_block">
+                                <oreui-show-block-title>
+                                    <oreui-show-block-title-text>响应式设计</oreui-show-block-title-text>
+                                </oreui-show-block-title>
+                                <oreui-show-block-description>组件针对不同设备类型自适应显示，确保流畅体验。</oreui-show-block-description>
+                            </oreui-show-block>
+                            <oreui-show-block class="description_block">
+                                <oreui-show-block-title>
+                                    <oreui-show-block-title-text>广泛兼容性</oreui-show-block-title-text>
+                                </oreui-show-block-title>
+                                <oreui-show-block-description>支持大多数主流现代浏览器，各终端特性保持一致。</oreui-show-block-description>
+                            </oreui-show-block>
                         </div>
-                    </div>
-                    <div class="footer_info">
-                        <div>MIT Licensed | © 2020 Spectrollay</div>
-                    </div>
+                    </oreui-main-display-frame>
+                    <oreui-main-display-frame>
+                        <div class="display">
+                            <div class="coming_soon-img"><img alt="Coming Soon Image" class="notice_img" src="./src/assets/images/Building.png"/></div>
+                            <p class="main_detail_center">即将到来</p>
+                        </div>
+                    </oreui-main-display-frame>
+                    <oreui-footer-display>
+                        <oreui-footer-display-title>V {VERSION}</oreui-footer-display-title>
+                        <oreui-footer-display-title>MIT Licensed | © 2020 Spectrollay</oreui-footer-display-title>
+                    </oreui-footer-display>
                 </main>
-            </scroll-container>
-            <custom-scrollbar class="primary_custom_scrollbar">
-                <custom-scrollbar-track></custom-scrollbar-track>
-                <custom-scrollbar-thumb></custom-scrollbar-thumb>
-            </custom-scrollbar>
-        </scroll-view>
-    </display-body>
-</dispaly-area>
+            </oreui-scroll-container>
+            <oreui-scrollbar class="primary_oreui_scrollbar">
+                <oreui-scrollbar-track></oreui-scrollbar-track>
+                <oreui-scrollbar-thumb></oreui-scrollbar-thumb>
+            </oreui-scrollbar>
+        </oreui-scroll-view>
+    </oreui-display-body>
+</oreui-display-area>
 </body>
 
-<script src="/javascript/loading.js"></script>
-<script src="/library/accessibility.js"></script>
-<script src="/javascript/public_script.js"></script>
-<script src="/javascript/oreui.js"></script>
+<script type="module" src="./src/index.js"></script>
+<link href="./src/styles/overlay/home_page.css" rel="stylesheet">
 
 </html>
