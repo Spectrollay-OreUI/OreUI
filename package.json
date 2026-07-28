@@ -1,7 +1,7 @@
 {
   "name": "oreui",
   "private": false,
-  "version": "0.1.0.20260715.03",
+  "version": "0.1.0.20260729.01",
   "type": "module",
   "description": "Minecraft Style UI Library",
   "files": [

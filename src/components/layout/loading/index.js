@@ -20,6 +20,8 @@
  * SOFTWARE.
  */
 
+import './style.css';
+
 /**
  * OreUI加载模块
  * 负责处理页面初始化时的加载遮罩逻辑
@@ -63,7 +65,7 @@
                 window.OreUI_MaskFullyHidden = true;
                 window.dispatchEvent(new Event('mask-hidden-complete'));
             }, 800);
-        }, 200);
+        }, 700);
     }
 
     function init() {

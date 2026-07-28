@@ -123,6 +123,7 @@ export default defineConfig({
     },
 
     build: {
+        manifest: true,
         outDir: 'dist',
         rollupOptions: {
             input: {
@@ -131,10 +132,14 @@ export default defineConfig({
             },
             output: {
                 entryFileNames: (chunk) => {
-                    // 确保核心库打包出固定文件名, 业务多页面打包进 assets 目录并带上 hash
                     return chunk.name === 'oreui' ? '[name].js' : 'assets/[name]-[hash].js';
                 },
-                assetFileNames: 'assets/[name]-[hash].[ext]',
+                assetFileNames: (chunkInfo) => {
+                    if (chunkInfo.name === 'oreui.css') {
+                        return 'oreui.css';
+                    }
+                    return 'assets/[name]-[hash].[ext]';
+                },
                 manualChunks: undefined // 启用代码分割机制
             }
         }

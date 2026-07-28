@@ -34,6 +34,9 @@
 import {copyText, playSound} from "@/javascript/public_script.js";
 import {logManager} from "@/javascript/public_define.js";
 
+import loadingGif from '../assets/images/Loading_white.gif';
+import fullScreenIcon from '../assets/images/fullScreen.png';
+
 class OreUI_Code extends HTMLElement {
     constructor() {
         super();
@@ -818,7 +821,7 @@ const TEMPLATE_PRESETS = {
                         </oreui-header-logo>
                         <oreui-header-right>
                             <oreui-header-item class="header_item_right" data-event="toggleFullscreen" style="cursor: pointer;">
-                                <img alt="" class="header_right_icon full_screen_icon" src="/src/assets/images/fullScreen.png"/>
+                                <img alt="" class="header_right_icon full_screen_icon" src="${fullScreenIcon}"/>
                             </oreui-header-item>
                         </oreui-header-right>
                     </oreui-header>
@@ -954,8 +957,47 @@ class OreUI_Display extends HTMLElement {
                     }
 
                     e.preventDefault();
-                }, {passive: false});
+                }, { passive: false });
 
+                let lastScreenY = 0;
+                let isTouching = false;
+
+                iframeDoc.addEventListener('touchstart', (e) => {
+                    if (this.classList.contains('is-fullscreen')) return;
+                    if (e.touches.length === 0) return;
+
+                    isTouching = true;
+                    lastScreenY = e.touches[0].screenY;
+                }, { passive: true });
+
+                iframeDoc.addEventListener('touchmove', (e) => {
+                    if (!isTouching || e.touches.length === 0) return;
+                    if (this.classList.contains('is-fullscreen')) return;
+
+                    const mainContainer = document.querySelector('.primary_scroll_container');
+                    if (!mainContainer) return;
+
+                    const currentScreenY = e.touches[0].screenY;
+                    const deltaY = lastScreenY - currentScreenY;
+                    lastScreenY = currentScreenY;
+
+                    if (deltaY !== 0) {
+                        mainContainer.scrollBy({ top: deltaY, behavior: 'instant' });
+                    }
+                }, { passive: true });
+
+                const handleTouchEnd = () => {
+                    isTouching = false;
+
+                    if (iframeDoc.activeElement && iframeDoc.activeElement !== iframeDoc.body) {
+                        iframeDoc.activeElement.blur();
+                    }
+                };
+
+                iframeDoc.addEventListener('touchend', handleTouchEnd, { passive: true });
+                iframeDoc.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
+                // 初始化动态高度计算
                 this.initIframeAutoHeight(iframeDoc);
 
             } catch (err) {
@@ -1056,6 +1098,7 @@ class OreUI_Display extends HTMLElement {
         const rootElement = iframeDoc.documentElement;
         if (!rootElement) return;
 
+        this._lastIframeHeight = 0;
         this._iframeResizeObserver = new ResizeObserver((entries) => {
             if (this.classList.contains('is-fullscreen')) return;
 
@@ -1070,13 +1113,23 @@ class OreUI_Display extends HTMLElement {
 
                 if (contentHeight === 0) continue;
 
+                const newHeight = contentHeight + 2;
+
+                if (Math.abs(newHeight - (this._lastIframeHeight || 0)) < 1) {
+                    continue;
+                }
+
+                this._lastIframeHeight = newHeight;
+
                 requestAnimationFrame(() => {
                     if (this.classList.contains('is-fullscreen')) return;
 
-                    this.style.setProperty('--iframe-dynamic-height', `${contentHeight + 2}px`);
+                    this.style.setProperty('--iframe-dynamic-height', `${newHeight}px`);
 
                     if (typeof window.getMainHandleScroll === 'function') {
-                        window.getMainHandleScroll()();
+                        Promise.resolve().then(() => {
+                            window.getMainHandleScroll()();
+                        });
                     }
                 });
             }
@@ -1086,6 +1139,13 @@ class OreUI_Display extends HTMLElement {
     }
 
     wrapBaseLayout(innerContent) {
+        const isProd = import.meta.env.PROD;
+
+        // 开发环境走源码，打包后走根目录下打包好的固定产物
+        const scriptPath = isProd ? '/oreui.js' : '/src/index.js';
+        const loadingStyleTag = isProd ? '' : `<link href="/src/components/layout/loading/style.css" rel="stylesheet">`;
+        const mainStyleTag = isProd ? `<link href="/oreui.css" rel="stylesheet">` : '';
+
         return `
             <!DOCTYPE html>
             <html lang="zh">
@@ -1094,22 +1154,25 @@ class OreUI_Display extends HTMLElement {
                 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
                 <meta content="webkit" name="renderer">
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-                <link href="/src/components/layout/loading/style.css" rel="stylesheet">
+                ${loadingStyleTag}
+                ${mainStyleTag}
             </head>
-            <oreui-loading-mask>
-                <oreui-loading-wrapper>
-                    <oreui-loading-spinner>
-                        <img alt="Loading" class="spinner_img" src="/src/assets/images/Loading_white.gif"/>
-                    </oreui-loading-spinner>
-                    <oreui-loading-spinner>
-                        <span class="spinner_text">加载中</span>
-                    </oreui-loading-spinner>
-                </oreui-loading-wrapper>
-            </oreui-loading-mask>
             <body>
+                <oreui-loading-mask>
+                    <oreui-loading-wrapper>
+                        <oreui-loading-spinner>
+                            <img alt="Loading" class="spinner_img" src="${loadingGif}"/>
+                        </oreui-loading-spinner>
+                        <oreui-loading-spinner>
+                            <span class="spinner_text">加载中</span>
+                        </oreui-loading-spinner>
+                    </oreui-loading-wrapper>
+                </oreui-loading-mask>
+                
                 ${innerContent}
             </body>
-            <script type="module" src="/src/index.js"></script>
+            <!-- 异步初始化 UI 组件库逻辑 -->
+            <script type="module" src="${scriptPath}"></script>
             </html>
         `;
     }

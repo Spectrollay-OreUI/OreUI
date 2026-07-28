@@ -38,15 +38,23 @@ import {showPop} from "@components/messages/pop/index.js";
  */
 const cacheName = 'oreui-audio-cache';
 
+import clickSound from '../assets/sounds/click.ogg';
+import buttonSound from '../assets/sounds/button.ogg';
+import popSound from '../assets/sounds/pop.ogg';
+import hideSound from '../assets/sounds/hide.ogg';
+import openSound from '../assets/sounds/drawer_open.ogg';
+import closeSound from '../assets/sounds/drawer_close.ogg';
+import toastSound from '../assets/sounds/toast.ogg';
+
 // 音效文件路径映射
 export const soundPaths = {
-    click: `${Root_Path}/sounds/click.ogg`,
-    button: `${Root_Path}/sounds/button.ogg`,
-    pop: `${Root_Path}/sounds/pop.ogg`,
-    hide: `${Root_Path}/sounds/hide.ogg`,
-    open: `${Root_Path}/sounds/drawer_open.ogg`,
-    close: `${Root_Path}/sounds/drawer_close.ogg`,
-    toast: `${Root_Path}/sounds/toast.ogg`
+    click: clickSound,
+    button: buttonSound,
+    pop: popSound,
+    hide: hideSound,
+    open: openSound,
+    close: closeSound,
+    toast: toastSound
 };
 
 // 全局状态变量
