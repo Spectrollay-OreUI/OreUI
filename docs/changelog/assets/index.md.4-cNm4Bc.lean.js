@@ -1,0 +1,1 @@
+import{_ as a,o as l,c as i,ae as e}from"./chunks/framework.xWbO0t60.js";const r=JSON.parse('{"title":"开发日志","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),v={name:"index.md"};function d(n,s,p,c,t,h){return l(),i("div",null,[...s[0]||(s[0]=[e("",130)])])}const o=a(v,[["render",d]]);export{r as __pageData,o as default};
