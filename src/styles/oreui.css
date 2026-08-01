@@ -244,6 +244,14 @@ oreui-scrollbar.primary_oreui_scrollbar oreui-scrollbar-thumb {
     width: 12px;
 }
 
+oreui-scrollbar.primary_oreui_scrollbar[style*="opacity: 0"] {
+    pointer-events: none;
+}
+
+oreui-scrollbar.primary_oreui_scrollbar[style*="opacity: 0"] oreui-scrollbar-thumb {
+    cursor: default;
+}
+
 /* 次要滚动条 */
 oreui-scrollbar.secondary_oreui_scrollbar {
     height: 100%;

@@ -355,9 +355,6 @@ if (typeof window !== 'undefined') {
         document.body.classList.add('no-dark-mode');
     }
 
-    // 初始化滚动系统
-    initializeScrollContainers();
-
     window.lazyLoadOptions = {
         selector: 'img.lazy, .lazy-bg',
         rootMargin: '300px 0px',

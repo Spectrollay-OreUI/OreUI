@@ -944,59 +944,6 @@ class OreUI_Display extends HTMLElement {
                     return;
                 }
 
-                iframeWin.addEventListener('wheel', (e) => {
-                    if (this.classList.contains('is-fullscreen')) return;
-
-                    const mainContainer = document.querySelector('.primary_scroll_container');
-                    if (!mainContainer) return;
-
-                    mainContainer.scrollTop += e.deltaY;
-
-                    if (typeof window.getMainHandleScroll === 'function') {
-                        window.getMainHandleScroll()();
-                    }
-
-                    e.preventDefault();
-                }, { passive: false });
-
-                let lastScreenY = 0;
-                let isTouching = false;
-
-                iframeDoc.addEventListener('touchstart', (e) => {
-                    if (this.classList.contains('is-fullscreen')) return;
-                    if (e.touches.length === 0) return;
-
-                    isTouching = true;
-                    lastScreenY = e.touches[0].screenY;
-                }, { passive: true });
-
-                iframeDoc.addEventListener('touchmove', (e) => {
-                    if (!isTouching || e.touches.length === 0) return;
-                    if (this.classList.contains('is-fullscreen')) return;
-
-                    const mainContainer = document.querySelector('.primary_scroll_container');
-                    if (!mainContainer) return;
-
-                    const currentScreenY = e.touches[0].screenY;
-                    const deltaY = lastScreenY - currentScreenY;
-                    lastScreenY = currentScreenY;
-
-                    if (deltaY !== 0) {
-                        mainContainer.scrollBy({ top: deltaY, behavior: 'instant' });
-                    }
-                }, { passive: true });
-
-                const handleTouchEnd = () => {
-                    isTouching = false;
-
-                    if (iframeDoc.activeElement && iframeDoc.activeElement !== iframeDoc.body) {
-                        iframeDoc.activeElement.blur();
-                    }
-                };
-
-                iframeDoc.addEventListener('touchend', handleTouchEnd, { passive: true });
-                iframeDoc.addEventListener('touchcancel', handleTouchEnd, { passive: true });
-
                 // 初始化动态高度计算
                 this.initIframeAutoHeight(iframeDoc);
 
@@ -1154,6 +1101,11 @@ class OreUI_Display extends HTMLElement {
                 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
                 <meta content="webkit" name="renderer">
                 <meta content="width=device-width, initial-scale=1.0" name="viewport">
+                <style>
+                    html {
+                        overscroll-behavior: auto !important;
+                    }
+                </style>
                 ${loadingStyleTag}
                 ${mainStyleTag}
             </head>

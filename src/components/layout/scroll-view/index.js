@@ -20,39 +20,75 @@
  * SOFTWARE.
  */
 
-// 节流函数,防止事件频繁触发
-function throttle(func, delay) {
+/**
+ * ==========================================================================
+ * OreUI 自定义滚动条核心管理模块
+ * ==========================================================================
+ */
+
+/**
+ * 节流工具函数
+ * 当 delay <= 16ms 时自动转换为 requestAnimationFrame 调度，配合高刷屏
+ */
+function throttle(func, delay = 16) {
     let lastCall = 0;
+    let scheduledFrame = false;
+
     return function (...args) {
-        const now = new Date().getTime();
-        if (now - lastCall < delay) return;
-        lastCall = now;
-        return func(...args);
+        if (delay <= 16) {
+            if (scheduledFrame) return;
+            scheduledFrame = true;
+            requestAnimationFrame(() => {
+                func.apply(this, args);
+                scheduledFrame = false;
+            });
+        } else {
+            const now = Date.now();
+            if (now - lastCall >= delay) {
+                lastCall = now;
+                func.apply(this, args);
+            }
+        }
     };
 }
 
-// 自定义滚动条
-// 处理滚动条显示逻辑
+/**
+ * 自定义滚动条显示与自动淡出处理
+ */
 function showScroll(customScrollbar) {
+    if (!customScrollbar) return;
+
     if (customScrollbar._scrollHideTimeout) {
         clearTimeout(customScrollbar._scrollHideTimeout); // 清除之前的隐藏定时器
     }
-    customScrollbar.style.opacity = '1'; // 显示滚动条
 
-    if (!window.OreUI_MaskFullyHidden) {
+    if (customScrollbar.style.display !== 'none') {
+        customScrollbar.style.opacity = '1'; // 显示滚动条
+    }
+
+    if (typeof window !== 'undefined' && !window.OreUI_MaskFullyHidden) {
         return;
     }
+
     customScrollbar._scrollHideTimeout = setTimeout(() => {
-        customScrollbar.style.opacity = '0'; // 3秒后隐藏滚动条
+        // 如果当前没有处于拖拽状态，则按时隐藏
+        if (!customScrollbar._isDragging) {
+            customScrollbar.style.opacity = '0'; // 3秒后隐藏滚动条
+        }
     }, 3000);
 }
 
-// 更新滚动条滑块位置和尺寸
+/**
+ * 刷新计算并同步滚动条滑块尺寸和位置
+ */
 function updateThumb(thumb, container, content, customScrollbar) {
+    if (!container || !content || !customScrollbar || !thumb) return;
+
     const scrollHeight = content.scrollHeight; // 滚动区域的总高度
     const containerHeight = container.getBoundingClientRect().height; // 滚动区域的显示高度
     // 如果容器高度为0直接返回
     if (containerHeight === 0) return;
+
     // 内容未溢出或滚动区域过小则隐藏滚动条并返回
     if (Math.round(scrollHeight) <= Math.round(containerHeight)) { // 解决计算精度不同导致的问题
         customScrollbar.style.display = 'none';
@@ -60,28 +96,34 @@ function updateThumb(thumb, container, content, customScrollbar) {
     } else {
         customScrollbar.style.display = 'block';
     }
-    const thumbHeight = Math.max((containerHeight / scrollHeight) * containerHeight, 35); // 滑块的高度 最小高度35px,防止滚动条过小
+
+    const thumbHeight = Math.max((containerHeight / scrollHeight) * containerHeight, 35); // 滑块的高度，最小高度35px，防止滚动条过小
     const maxContentScroll = scrollHeight - containerHeight; // 滑块能到达的最大位置
     const currentScrollTop = Math.round(container.scrollTop); // 当前的滑块位置
     let thumbPosition, thumbTrackSpace;
-    if (content.classList.contains('main_with_tab_bar')) customScrollbar.style.top = '100px'; // 这里需要给标签栏预留高度
+
+    if (content.classList.contains('main_with_tab_bar')) customScrollbar.style.top = '100px'; // 这里需要给标签栏预留高度 TODO 后续优化连携样式
     if (customScrollbar.classList.contains('primary_oreui_scrollbar')) {
         thumbTrackSpace = containerHeight - (thumbHeight + 4); // 4为主要滑块的上下边框高度
     } else {
         thumbTrackSpace = containerHeight - thumbHeight; // 次要滑块没有边框样式
     }
+
     if (maxContentScroll > 0 && thumbTrackSpace > 0) { // 确保有滚动空间和滑块移动空间
         thumbPosition = (currentScrollTop / maxContentScroll) * thumbTrackSpace;
         thumbPosition = Math.max(0, Math.min(thumbPosition, thumbTrackSpace)); // 限制滑块在有效范围内
     } else {
         thumbPosition = 0; // 滑块置于顶部
     }
+
     thumb.style.height = `${thumbHeight}px`;
-    thumb.style.top = `${thumbPosition}px`;
+    thumb.style.transform = `translateY(${thumbPosition}px)`; // 采用 transform 避免重排，提升 GPU 硬件渲染帧率
     customScrollbar.style.height = `${containerHeight}px`;
 }
 
-// 处理滚动条点击跳转
+/**
+ * 响应滚动条点击跳转事件
+ */
 function handleScrollbarClick(e, isDragging, customScrollbar, thumb, container, content) {
     if (isDragging || customScrollbar.classList.contains('secondary_oreui_scrollbar')) return; // 次要滚动条和拖动中的主要滚动条不能点击跳转
 
@@ -94,7 +136,9 @@ function handleScrollbarClick(e, isDragging, customScrollbar, thumb, container, 
     const maxContentScroll = contentScrollHeight - containerVisibleHeight;
     if (maxContentScroll <= 0) return;
 
-    const thumbCurrentOffsetTop = thumb.offsetTop; // 滑块相对于其父元素的顶部
+    // 根据动画变换计算当前实际 Top 绝对偏移
+    const thumbCurrentOffsetTop = thumb.getBoundingClientRect().top - customScrollbar.getBoundingClientRect().top; // 计算滑块相对于其父元素顶部的真实偏移
+
     if (clickPositionInScrollbar < thumbCurrentOffsetTop || clickPositionInScrollbar > (thumbCurrentOffsetTop + thumbVisualHeight)) {
         let scrollbarTrackEffectiveHeight = scrollbarActualHeight - (thumbVisualHeight + 4); // 4为主要滑块的上下边框高度
 
@@ -107,7 +151,9 @@ function handleScrollbarClick(e, isDragging, customScrollbar, thumb, container, 
     }
 }
 
-// 处理滚动事件
+/**
+ * 滚动渲染统一调度入口
+ */
 function handleScroll(customScrollbar, customThumb, container, content) {
     if (!customScrollbar || !customThumb) return;
 
@@ -117,7 +163,9 @@ function handleScroll(customScrollbar, customThumb, container, content) {
     });
 }
 
-// 处理拖动滚动条的逻辑
+/**
+ * 指针移动拖拽实时映射
+ */
 function handlePointerMove(e, dragState, thumb, container, content, customScrollbar) {
     if (!dragState.isDragging || customScrollbar.classList.contains('secondary_oreui_scrollbar')) return; // 次要滚动条不能拖动
 
@@ -126,70 +174,110 @@ function handlePointerMove(e, dragState, thumb, container, content, customScroll
     const containerHeight = container.getBoundingClientRect().height; // 根据初始位置和移动距离计算新的滑块位置
     const thumbHeight = thumb.offsetHeight;
     const maxThumbTop = containerHeight - thumbHeight;
-    const newTop = Math.min(Math.max(dragState.initialThumbTop + deltaY, 0), maxThumbTop); // 计算滑块的新位置,确保在可滑动范围内
+    const newTop = Math.min(Math.max(dragState.initialThumbTop + deltaY, 0), maxThumbTop); // 计算滑块的新位置，确保在可滑动范围内
     const maxScrollTop = content.scrollHeight - containerHeight; // 计算页面内容的滚动位置
 
-    container.scrollTo({
-        top: (newTop / maxThumbTop) * maxScrollTop, behavior: 'instant' // 滚动时不产生动画
-    });
+    thumb.style.transform = `translateY(${newTop}px)`;
 
-    updateThumb(thumb, container, content, customScrollbar);
+    // 将内容区域的重排滚动推入下一帧，避免堵塞渲染主线程
+    if (maxThumbTop > 0 && maxScrollTop > 0) {
+        if (dragState.rafId) cancelAnimationFrame(dragState.rafId);
+        dragState.rafId = requestAnimationFrame(() => {
+            container.scrollTo({
+                top: (newTop / maxThumbTop) * maxScrollTop,
+                behavior: 'instant' // 滚动时不产生动画
+            });
+        });
+    }
 }
 
+/**
+ * 拖拽按压起点事件处理
+ */
 function handlePointerDown(e, customThumb, container, content, dragState, customScrollbar) {
     dragState.isDragging = true;
+    customScrollbar._isDragging = true;
+
     dragState.startY = e.clientY || (e.touches && e.touches[0].clientY);
     dragState.initialThumbTop = customThumb.getBoundingClientRect().top - container.getBoundingClientRect().top;
+
+    // PointerCapture 特性支持：拉住指针防离屏脱节
+    if (e.pointerId !== undefined && customThumb.setPointerCapture) {
+        try {
+            customThumb.setPointerCapture(e.pointerId);
+        } catch (error) {
+        }
+    }
+
     const handlePointerMoveBound = (e) => handlePointerMove(e, dragState, customThumb, container, content, customScrollbar);
 
-    document.addEventListener('pointermove', handlePointerMoveBound, { passive: false });
-    document.addEventListener('touchmove', handlePointerMoveBound, { passive: false });
-    const handlePointerUp = () => {
+    document.addEventListener('pointermove', handlePointerMoveBound, {passive: false});
+    document.addEventListener('touchmove', handlePointerMoveBound, {passive: false});
+
+    const handlePointerUp = (upEvent) => {
         dragState.isDragging = false;
+        customScrollbar._isDragging = false;
+
+        if (upEvent && upEvent.pointerId !== undefined && customThumb.releasePointerCapture) {
+            try {
+                customThumb.releasePointerCapture(upEvent.pointerId);
+            } catch (error) {
+            }
+        }
+
         document.removeEventListener('pointermove', handlePointerMoveBound);
         document.removeEventListener('touchmove', handlePointerMoveBound);
+        showScroll(customScrollbar);
     };
+
     document.addEventListener('pointerup', handlePointerUp, {once: true});
     document.addEventListener('touchend', handlePointerUp, {once: true});
 }
 
-// 绑定滚动事件的通用函数,使用节流处理滚动事件
+/**
+ * 绑定各个容器的事件监听与互动逻辑
+ */
 export function bindScrollEvents(container, content, customScrollbar, customThumb) {
     const dragState = {isDragging: false, startY: 0, initialThumbTop: 0}; // 使用对象管理拖动状态
 
     const throttledUpdateAndShowScroll = throttle(() => {
         handleScroll(customScrollbar, customThumb, container, content);
-    }, 1); // 使用节流函数优化性能(需要即时响应计算的场景)
+    }, 1); // 使用节流函数优化性能（需要即时响应计算的场景）
 
     const throttledShowOnly = throttle(() => {
         showScroll(customScrollbar);
-    }, 100); // 使用节流函数优化性能(仅需显示滚动条的场景)
+    }, 100); // 使用节流函数优化性能（仅需显示滚动条的场景）
 
-    // 自定义滚动条精确滚动
+    // 自定义滚动条精确滚动，实时映射 deltaY 像素位移量
     customScrollbar.addEventListener('wheel', (e) => {
-        let delta = e.deltaY > 0 ? 10 : -10;
-        container.scrollTop += delta;
+        container.scrollTop += e.deltaY;
         throttledUpdateAndShowScroll();
         e.preventDefault();
-    });
+    }, {passive: false});
 
-    // 仅需要显示滚动条的事件
-    document.addEventListener('mousemove', throttledShowOnly);
-    document.addEventListener('touchmove', throttledShowOnly);
+    // 仅需要显示滚动条的事件，在视图交互范围内监听
+    const scrollView = content.closest('oreui-scroll-view') || container;
+    scrollView.addEventListener('pointermove', throttledShowOnly, {passive: true});
+
     // 需要显示和更新滚动条的事件
-    container.addEventListener('scroll', throttledUpdateAndShowScroll);
+    container.addEventListener('scroll', throttledUpdateAndShowScroll, {passive: true});
     window.addEventListener('resize', throttledUpdateAndShowScroll);
+
     customThumb.addEventListener('pointerdown', (e) => handlePointerDown(e, customThumb, container, content, dragState, customScrollbar));
     customThumb.addEventListener('touchstart', (e) => {
         handlePointerDown(e, customThumb, container, content, dragState, customScrollbar);
-    }, { passive: false });
+    }, {passive: false});
+
     customScrollbar.addEventListener('click', (e) => handleScrollbarClick(e, dragState.isDragging, customScrollbar, customThumb, container, content));
+
     window.addEventListener('mask-hidden-complete', () => {
         showScroll(customScrollbar);
     });
 }
 
-// 获取并处理所有滚动容器
+/**
+ * 自动识别 DOM 并初始化所有滚动组件
+ */
 export function initializeScrollContainers() {
     const containers = document.querySelectorAll('.primary_scroll_container, .secondary_scroll_container');
 
@@ -202,8 +290,17 @@ export function initializeScrollContainers() {
         if (!scrollViewElement) return;
 
         const customScrollbarElement = scrollViewElement.querySelector('oreui-scrollbar');
+        if (!customScrollbarElement) return;
+
         const customThumbElement = customScrollbarElement.querySelector('oreui-scrollbar-thumb');
+        if (!customThumbElement) return;
+
         bindScrollEvents(container, contentElement, customScrollbarElement, customThumbElement); // 为所有容器绑定标准的滚动事件
+
+        // 重置或销毁已有的 ResizeObserver 实例，防止多次初始化累加泄露
+        if (container._resizeObserver) {
+            container._resizeObserver.disconnect();
+        }
 
         // 监听元素尺寸变化
         const ScrollHandlerForResize = createHandleScroll(customScrollbarElement, customThumbElement, container, contentElement);
@@ -211,32 +308,44 @@ export function initializeScrollContainers() {
         const observer = new ResizeObserver(() => {
             throttledScrollHandler();
         }); // 创建ResizeObserver实例
+
         observer.observe(container); // 观察主容器本身
         observer.observe(contentElement); // 同时观察其内容元素
+        container._resizeObserver = observer; // 挂载引用供后续垃圾回收或解绑
     });
 }
 
-// 初始化滚动容器
+/**
+ * 自动挂载启动入口
+ */
 if (typeof window !== 'undefined') {
-    document.addEventListener('DOMContentLoaded', function () {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeScrollContainers();
+        });
+    } else {
         initializeScrollContainers();
-    });
+    }
 }
 
-// 使用带有内部状态的滚动处理闭包函数
+/**
+ * 闭包创建函数
+ */
 export function createHandleScroll(customScrollbar, customThumb, container, content) {
     return function () {
         handleScroll(customScrollbar, customThumb, container, content);
     };
 }
 
-// 导出滚动容器
+/**
+ * 主容器快捷获取 API 导出
+ */
 export function getMainScrollContainer() {
     return document.querySelector('.primary_scroll_container');
 }
 
 /**
- * 导出主滚动容器的快捷操作 (如果存在)
+ * 导出主滚动容器的快捷操作（如果存在）
  * NOTE 在有涉及到自定义高度变化的地方要调用这个代码
  */
 export const getMainHandleScroll = () => {
@@ -246,8 +355,11 @@ export const getMainHandleScroll = () => {
     };
 
     const scrollView = scrollContent.closest('oreui-scroll-view');
-    const scrollbar = scrollView.querySelector('oreui-scrollbar');
-    const thumb = scrollView.querySelector('oreui-scrollbar-thumb');
+    const scrollbar = scrollView ? scrollView.querySelector('oreui-scrollbar') : null;
+    const thumb = scrollView ? scrollView.querySelector('oreui-scrollbar-thumb') : null;
+
+    if (!scrollbar || !thumb) return () => {
+    };
 
     return throttle(createHandleScroll(scrollbar, thumb, mainScrollContainer, scrollContent), 1);
 };
