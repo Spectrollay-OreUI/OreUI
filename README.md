@@ -108,4 +108,4 @@ OreUI 是由 Mojang Studios 推出的**开源用户界面 (UI) 构建基石**，
 
 如果你有任何问题、建议或想要交流，可以通过以下方式联系我们：
 
-[![Telegram](https://img.shields.io/badge/Telegram-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://t.me/Spectrollay_MCW)   [![QQ-Group](https://img.shields.io/badge/QQ-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://qm.qq.com/q/AqLmKLH9mM)   [![YH-Group](https://img.shields.io/badge/云湖-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802)
+[![Telegram](https://img.shields.io/badge/Telegram-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://t.me/spectrollay_workshop)   [![QQ-Group](https://img.shields.io/badge/QQ-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://qm.qq.com/q/AqLmKLH9mM)   [![YH-Group](https://img.shields.io/badge/云湖-%E7%BE%A4%E7%BB%84-blue?style=for-the-badge)](https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802)

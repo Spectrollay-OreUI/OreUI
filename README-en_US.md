@@ -108,4 +108,4 @@ This project is licensed under the [**MIT License**](LICENSE). You are free to u
 
 If you have any questions, suggestions, or just want to chat, feel free to reach out via:
 
-[![Telegram](https://img.shields.io/badge/Telegram-Group-blue?style=for-the-badge)](https://t.me/Spectrollay_MCW) [![QQ-Group](https://img.shields.io/badge/QQ-Group-blue?style=for-the-badge)](https://qm.qq.com/q/AqLmKLH9mM) [![YH-Group](https://img.shields.io/badge/Yunhu-Group-blue?style=for-the-badge)](https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802)
+[![Telegram](https://img.shields.io/badge/Telegram-Group-blue?style=for-the-badge)](https://t.me/spectrollay_workshop) [![QQ-Group](https://img.shields.io/badge/QQ-Group-blue?style=for-the-badge)](https://qm.qq.com/q/AqLmKLH9mM) [![YH-Group](https://img.shields.io/badge/Yunhu-Group-blue?style=for-the-badge)](https://yhfx.jwznb.com/share?key=VyTE7W7sLwRl&ts=1684642802)
